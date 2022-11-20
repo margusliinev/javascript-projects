@@ -8,12 +8,52 @@
         <meta name="keywords" content="" />
         <meta name="author" content="Margus Liinev" />
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="../fontawesome-free-6.2.0-web/css/all.css" />
         <script defer src="./main.js"></script>
-        <title></title>
+        <title>Grocery Bud</title>
     </head>
     <body>
-        <!-- START -->
+        <!-- GROCERY BUD -->
         <!-- ==================================================================================================== -->
+
+        <div class="section-center">
+            <form class="grocery-form">
+                <div class="alert alert-danger">please enter value</div>
+                <h4>grocery bud</h4>
+                <div class="form-row">
+                    <input type="text" class="form-input" placeholder="e.g.eggs" />
+                    <button type="submit" class="submit-btn">submit</button>
+                </div>
+            </form>
+            <div class="grocery-container">
+                <div class="grocery-list">
+                    <article class="grocery-item">
+                        <span class="title">apples</span>
+                        <div class="btn-container">
+                            <button type="button" class="edit-btn">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" class="delete-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </article>
+                    <article class="grocery-item">
+                        <span class="title">oranges</span>
+                        <div class="btn-container">
+                            <button type="button" class="edit-btn">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" class="delete-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+                <button type="button" class="clear-btn">clear items</button>
+            </div>
+        </div>
+
         <!-- END -->
         <!-- ==================================================================================================== -->
     </body>
