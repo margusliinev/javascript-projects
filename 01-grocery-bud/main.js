@@ -26,9 +26,7 @@ function addItem(e) {
     if (value && !editFlag) {
         const element = document.createElement('article');
         element.classList.add('grocery-item');
-        const attr = document.createAttribute('data-id');
-        attr.value = id;
-        element.setAttributeNode(attr);
+        element.setAttribute('data-id', id);
         element.innerHTML = `<p class="title">${value}</p>
                             <div class="btn-container">
                                 <button type="button" class="edit-btn">
@@ -38,7 +36,7 @@ function addItem(e) {
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>`;
-        list.appendChild(element);
+        list.append(element);
         displayAlert('item added to the list', 'success');
         container.classList.add('show-container');
         // add to local storage
@@ -59,18 +57,35 @@ function displayAlert(text, action) {
     }, 1000);
 }
 
+function clearItems() {
+    const items = document.querySelectorAll('.grocery-item');
+    if (items.length > 0) {
+        items.forEach(function (item) {
+            item.remove();
+        });
+    }
+    container.classList.remove('show-container');
+    displayAlert('empty list', 'danger');
+    setBackToDefault();
+    // localStorage.removeItem('list')
+}
+
 function addToLocalStorage(id, value) {
     console.log('added to local storage');
 }
 
 function setBackToDefault() {
-    console.log('set back to default');
+    grocery.value = '';
+    editFlag = false;
+    editID = '';
+    submitBtn.textContent = 'submit';
 }
 
 /* EVENT LISTENERS */
 /* ==================================================================================================== */
 
 form.addEventListener('submit', addItem);
+clearBtn.addEventListener('click', clearItems);
 
 /* END */
 /* ==================================================================================================== */
