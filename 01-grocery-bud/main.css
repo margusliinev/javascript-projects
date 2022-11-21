@@ -95,7 +95,7 @@ h6 {
 
 .alert {
     padding: 0.375rem 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
     border-color: transparent;
     border-radius: var(--borderRadius);
     font-size: 0.8rem;
@@ -162,7 +162,7 @@ h6 {
 }
 
 .grocery-container {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     transition: var(--transition);
     visibility: hidden;
 }
@@ -212,7 +212,7 @@ h6 {
 .clear-btn {
     color: var(--colorDarkBlue);
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     cursor: pointer;
     background: transparent;
     border-color: transparent;
