@@ -102,14 +102,17 @@ h6 {
     text-align: center;
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
+    visibility: hidden;
 }
 
 .alert-danger {
+    visibility: visible;
     color: darkred;
     background-color: rgb(255, 200, 200);
 }
 
 .alert-success {
+    visibility: visible;
     color: darkgreen;
     background-color: rgb(200, 255, 200);
 }
@@ -120,7 +123,7 @@ h6 {
     color: var(--colorBlack);
 }
 
-.grocery-form .form-row {
+.grocery-form .form-control {
     display: flex;
 }
 
@@ -159,7 +162,13 @@ h6 {
 }
 
 .grocery-container {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    transition: var(--transition);
+    visibility: hidden;
+}
+
+.show-container {
+    visibility: visible;
 }
 
 .grocery-item {
@@ -203,7 +212,7 @@ h6 {
 .clear-btn {
     color: var(--colorDarkBlue);
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     cursor: pointer;
     background: transparent;
     border-color: transparent;
