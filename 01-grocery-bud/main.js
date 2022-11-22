@@ -14,7 +14,6 @@ const clearBtn = document.querySelector('.clear-btn');
 
 let editElement;
 let editFlag = false;
-let editID = '';
 
 /* FUNCTIONS */
 /* ==================================================================================================== */
@@ -22,11 +21,9 @@ let editID = '';
 function addItem(e) {
     e.preventDefault();
     const value = grocery.value;
-    const id = new Date().getTime().toString();
     if (value && !editFlag) {
         const element = document.createElement('article');
         element.classList.add('grocery-item');
-        element.setAttribute('data-id', id);
         element.innerHTML = `<p class="title">${value}</p>
                             <div class="btn-container">
                                 <button type="button" class="edit-btn">
@@ -36,25 +33,39 @@ function addItem(e) {
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>`;
+        const deleteBtn = element.querySelector('.delete-btn');
+        const editBtn = element.querySelector('.edit-btn');
+        deleteBtn.addEventListener('click', deleteItem);
+        editBtn.addEventListener('click', editItem);
         list.append(element);
         displayAlert('item added to the list', 'success');
         container.classList.add('show-container');
-        // add to local storage
-        addToLocalStorage(id, value);
-        // set back to default
         setBackToDefault();
     } else if (value && editFlag) {
+        editElement.innerHTML = value;
+        displayAlert('value changed', 'success');
+        setBackToDefault();
     } else {
         displayAlert('Please enter value', 'danger');
     }
 }
 
-function displayAlert(text, action) {
-    alert.textContent = text;
-    alert.classList.add(`alert-${action}`);
-    setTimeout(function () {
-        alert.classList.remove(`alert-${action}`);
-    }, 1000);
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    element.remove();
+    if (list.children.length === 0) {
+        container.classList.remove('show-container');
+    }
+    displayAlert('item removed', 'danger');
+    setBackToDefault();
+}
+
+function editItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+    grocery.value = editElement.innerHTML;
+    editFlag = true;
+    submitBtn.textContent = 'edit';
 }
 
 function clearItems() {
@@ -67,17 +78,19 @@ function clearItems() {
     container.classList.remove('show-container');
     displayAlert('empty list', 'danger');
     setBackToDefault();
-    // localStorage.removeItem('list')
 }
 
-function addToLocalStorage(id, value) {
-    console.log('added to local storage');
+function displayAlert(text, action) {
+    alert.textContent = text;
+    alert.classList.add(`alert-${action}`);
+    setTimeout(function () {
+        alert.classList.remove(`alert-${action}`);
+    }, 1000);
 }
 
 function setBackToDefault() {
     grocery.value = '';
     editFlag = false;
-    editID = '';
     submitBtn.textContent = 'submit';
 }
 
