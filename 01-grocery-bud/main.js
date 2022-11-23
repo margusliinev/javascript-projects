@@ -21,6 +21,7 @@ let editFlag = false;
 function addItem(e) {
     e.preventDefault();
     const value = grocery.value;
+    const id = new Date().getTime().toString();
     if (value && !editFlag) {
         const element = document.createElement('article');
         element.classList.add('grocery-item');
@@ -42,6 +43,7 @@ function addItem(e) {
         list.append(element);
         container.classList.add('show-container');
         displayAlert('item added to the list', 'success');
+        addToLocalStorage(id, value);
         setBackToDefault();
     } else if (value && editFlag) {
         editElement.textContent = grocery.value;
@@ -90,6 +92,13 @@ function setBackToDefault() {
     grocery.value = '';
     editFlag = false;
     submitBtn.textContent = 'submit';
+}
+
+function addToLocalStorage(id, value) {
+    const grocery = { id, value };
+    let items = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : [];
+    items.push(grocery);
+    localStorage.setItem('list', JSON.stringify(items));
 }
 
 /* EVENT LISTENERS */
