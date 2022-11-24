@@ -14,6 +14,7 @@ const clearBtn = document.querySelector('.clear-btn');
 
 let editElement;
 let editFlag = false;
+let editID = '';
 
 /* FUNCTIONS */
 /* ==================================================================================================== */
@@ -49,6 +50,7 @@ function addItem(e) {
     } else if (value && editFlag) {
         editElement.textContent = grocery.value;
         displayAlert('item has been updated', 'success');
+        editLocalStorage(editID, value);
         setBackToDefault();
     } else {
         displayAlert('please enter value', 'danger');
@@ -59,6 +61,7 @@ function editItem(e) {
     editElement = e.currentTarget.parentElement.previousElementSibling;
     grocery.value = editElement.textContent;
     editFlag = true;
+    editID = e.currentTarget.parentElement.parentElement.dataset.id;
     submitBtn.textContent = 'edit';
 }
 
@@ -81,6 +84,7 @@ function clearItems() {
     displayAlert('items removed', 'danger');
     container.classList.remove('show-container');
     setBackToDefault();
+    localStorage.removeItem('list');
 }
 
 function displayAlert(text, action) {
@@ -114,6 +118,17 @@ function removeFromLocalStorage(id) {
         if (item.id !== id) {
             return item;
         }
+    });
+    localStorage.setItem('list', JSON.stringify(items));
+}
+
+function editLocalStorage(id, value) {
+    let items = getLocalStorage();
+    items = items.map(function (item) {
+        if (item.id === id) {
+            item.value = value;
+        }
+        return item;
     });
     localStorage.setItem('list', JSON.stringify(items));
 }
