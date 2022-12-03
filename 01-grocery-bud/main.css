@@ -163,7 +163,6 @@ h6 {
 
 .grocery-container {
     margin-top: 1.5rem;
-    transition: var(--transition);
     visibility: hidden;
 }
 
@@ -219,7 +218,6 @@ h6 {
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
     font-size: 1rem;
-    transition: var(--transition);
 }
 
 .clear-btn:hover {
