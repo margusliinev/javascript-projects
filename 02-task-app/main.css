@@ -1,0 +1,221 @@
+/* GLOBAL STYLES & IMPORTS */
+/* ==================================================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --colorBlue: #3466aa;
+    --colorDarkBlue: #114084;
+    --colorLightBlue: #92bfdf;
+    --colorWhite: #f1f1f1;
+    --colorGrey: #808080;
+    --colorBlack: #1c1c1c;
+    --colorRed: #dc3545;
+    --colorGreen: #28a745;
+    --fontPrimary: 'Poppins', sans-serif;
+    --letterSpacing: 1px;
+    --borderRadius: 0.25rem;
+    --transition: all 0.15s ease-in-out;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fontPrimary);
+    line-height: 1.5;
+    background-color: var(--colorWhite);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+ol,
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: capitalize;
+    letter-spacing: var(--letterSpacing);
+}
+
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.5rem;
+}
+h5 {
+    font-size: 1.25rem;
+}
+h6 {
+    font-size: 1rem;
+}
+
+/* TASK APP */
+/* ==================================================================================================== */
+
+.section-center {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    background-color: var(--colorWhite);
+    border: 7px solid var(--colorBlue);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    width: 80vw;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.form h4 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.task-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--colorLightBlue);
+    color: var(--colorBlack);
+    border-radius: var(--borderRadius);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.task-btn:hover {
+    box-shadow: 0 0 3px var(--colorDarkBlue);
+}
+
+.task-btn-text {
+    text-transform: capitalize;
+}
+
+.task-btn-icon {
+    background-color: var(--colorBlue);
+    color: var(--colorWhite);
+    padding: 0.25rem;
+    border-radius: var(--borderRadius);
+    transition: var(--transition);
+}
+
+.task-btn:hover .task-btn-icon {
+    background-color: var(--colorDarkBlue);
+}
+
+.tasks h4 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.task-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+}
+
+.task {
+    background-color: var(--colorLightBlue);
+    border: 4px solid var(--colorBlue);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+}
+
+.task-title {
+    text-transform: capitalize;
+    margin-bottom: 0.25rem;
+}
+
+.task-date {
+    color: rgb(70, 70, 70);
+    margin-bottom: 0.75rem;
+}
+
+.task-description {
+    margin-bottom: 1rem;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.btn-container button {
+    border: transparent;
+    background-color: transparent;
+    font-size: 1.4rem;
+    color: var(--colorBlack);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    color: var(--colorGreen);
+}
+
+.delete-btn:hover {
+    color: var(--colorRed);
+}
+
+.clear-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--colorBlue);
+    color: var(--colorWhite);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--borderRadius);
+    border: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.clear-btn:hover {
+    background-color: var(--colorDarkBlue);
+}
+
+/* END */
+/* ==================================================================================================== */
