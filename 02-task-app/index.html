@@ -18,7 +18,7 @@
 
         <div class="section-center">
             <div class="container">
-                <div class="form">
+                <div class="task-header">
                     <h4>Task App</h4>
                     <button type="button" class="task-btn">
                         <p class="task-btn-text">add new task</p>
@@ -58,6 +58,36 @@
                     <button type="button" class="clear-btn">Clear Tasks</button>
                 </div>
             </div>
+        </div>
+
+        <!-- FORM MODAL -->
+        <!-- ==================================================================================================== -->
+
+        <div class="modal">
+            <form class="form">
+                <div class="form-header">
+                    <h4>Add New Task</h4>
+                    <button type="button" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="form-control">
+                    <label for="title">Task Title</label>
+                    <input type="text" name="title" id="title" class="form-input" placeholder="new task" />
+                </div>
+                <div class="form-control">
+                    <label for="date">Due Date</label>
+                    <input type="date" name="date" id="date" class="form-input" />
+                </div>
+                <div class="form-control">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="7"></textarea>
+                </div>
+                <div class="form-btn-container">
+                    <button type="button" class="form-close-btn">close</button>
+                    <button type="submit" class="form-add-btn">Add</button>
+                </div>
+            </form>
         </div>
 
         <!-- END -->

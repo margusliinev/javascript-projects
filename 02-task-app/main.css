@@ -14,7 +14,7 @@
     --colorGreen: #28a745;
     --fontPrimary: 'Poppins', sans-serif;
     --letterSpacing: 1px;
-    --borderRadius: 0.25rem;
+    --borderRadius: 0.3rem;
     --transition: all 0.15s ease-in-out;
 }
 
@@ -101,7 +101,7 @@ h6 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-.form h4 {
+.task-header h4 {
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
@@ -116,7 +116,7 @@ h6 {
     width: 100%;
     font-size: 1.3rem;
     padding: 0.5rem 0.75rem;
-    background: var(--colorLightBlue);
+    background: #aecde1;
     color: var(--colorBlack);
     border-radius: var(--borderRadius);
     margin-bottom: 1rem;
@@ -156,7 +156,7 @@ h6 {
 }
 
 .task {
-    background-color: var(--colorLightBlue);
+    background-color: #aecde1;
     border: 4px solid var(--colorBlue);
     border-radius: 0.5rem;
     padding: 0.25rem;
@@ -217,5 +217,127 @@ h6 {
     background-color: var(--colorDarkBlue);
 }
 
-/* END */
+/* FORM MODAL */
 /* ==================================================================================================== */
+
+.open-modal {
+    display: grid !important;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    place-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.form {
+    background-color: var(--colorWhite);
+    width: 85vw;
+    max-width: 500px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem;
+}
+
+.form-header h4 {
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: transparent;
+    font-size: 2rem;
+    color: rgb(90, 90, 90);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    color: var(--colorBlack);
+}
+
+.form-control {
+    padding: 1rem;
+    display: grid;
+    row-gap: 1rem;
+}
+
+.form-control input {
+    color: rgb(60, 60, 60);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid lightgrey;
+    border-radius: var(--borderRadius);
+}
+
+.form-control input::placeholder {
+    color: rgb(60, 60, 60);
+}
+
+.form-control input:focus {
+    outline: 3px solid var(--colorLightBlue);
+}
+
+.form-control input::placeholder {
+    color: black;
+}
+
+.form-control textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid lightgrey;
+    border-radius: var(--borderRadius);
+}
+
+.form-control textarea:focus {
+    outline: 3px solid var(--colorLightBlue);
+}
+
+.form-btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.form-btn-container button {
+    font-size: 1rem;
+    text-transform: capitalize;
+    border: transparent;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-close-btn {
+    background-color: var(--colorGrey);
+    color: var(--colorWhite);
+}
+
+.form-close-btn:hover {
+    background-color: rgb(90, 90, 90);
+}
+
+.form-add-btn {
+    background-color: rgb(38, 134, 212);
+    color: var(--colorWhite);
+}
+
+.form-add-btn:hover {
+    background-color: var(--colorBlue);
+}
+
+/* END */
+/* ==================================================================================================== */ ;
