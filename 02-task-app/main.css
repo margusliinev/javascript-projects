@@ -101,6 +101,14 @@ h6 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
+.tasks {
+    display: none;
+}
+
+.show-container {
+    display: unset;
+}
+
 .task-header h4 {
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -143,7 +151,7 @@ h6 {
     background-color: var(--colorDarkBlue);
 }
 
-.tasks h4 {
+.container h4 {
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 1rem;
@@ -274,15 +282,15 @@ h6 {
 }
 
 .form-control input {
-    color: rgb(60, 60, 60);
+    color: rgb(80, 80, 80);
     font-size: 1rem;
     padding: 0.5rem;
     border: 1px solid lightgrey;
     border-radius: var(--borderRadius);
 }
 
-.form-control input::placeholder {
-    color: rgb(60, 60, 60);
+#title::placeholder {
+    color: rgb(80, 80, 80);
 }
 
 .form-control input:focus {
