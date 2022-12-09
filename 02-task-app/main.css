@@ -282,15 +282,11 @@ h6 {
 }
 
 .form-control input {
-    color: rgb(80, 80, 80);
+    color: black;
     font-size: 1rem;
     padding: 0.5rem;
     border: 1px solid lightgrey;
     border-radius: var(--borderRadius);
-}
-
-#title::placeholder {
-    color: rgb(80, 80, 80);
 }
 
 .form-control input:focus {

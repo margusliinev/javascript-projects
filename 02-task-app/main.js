@@ -4,6 +4,8 @@
 const taskBtn = get('.task-btn');
 const closeBtn = get('.close-btn');
 const formCloseBtn = get('.form-close-btn');
+const formAddBtn = get('.form-add-btn');
+const clearBtn = get('.clear-btn');
 const modal = get('.modal');
 const form = get('.form');
 const title = get('#title');
@@ -16,6 +18,9 @@ const container = get('.tasks');
 /* ==================================================================================================== */
 
 let editFlag = false;
+let editTitle;
+let editDate;
+let editDescription;
 
 /* FUNCTIONS */
 /* ==================================================================================================== */
@@ -57,14 +62,26 @@ function submitForm(e) {
         deleteBtn.addEventListener('click', deleteItem);
         setBackToDefault();
     } else if ((titleValue, dateValue, descriptionValue && editFlag)) {
-        console.log('editing');
+        editTitle.textContent = title.value;
+        editDate.textContent = date.value;
+        editDescription.textContent = description.value;
+        modal.classList.remove('open-modal');
+        setBackToDefault();
     } else {
         console.log('error, you did not submit valid values');
     }
 }
 
-function editItem() {
-    console.log('edit item');
+function editItem(e) {
+    editFlag = true;
+    editTitle = e.currentTarget.parentElement.parentElement.firstElementChild;
+    editDate = e.currentTarget.parentElement.parentElement.firstElementChild.nextElementSibling;
+    editDescription = e.currentTarget.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling;
+    title.value = editTitle.textContent;
+    date.value = editDate.textContent;
+    description.value = editDescription.textContent;
+    formAddBtn.textContent = 'edit';
+    modal.classList.add('open-modal');
 }
 
 function deleteItem(e) {
@@ -74,19 +91,34 @@ function deleteItem(e) {
     }
 }
 
+function clearItems() {
+    taskList.innerHTML = '';
+    container.classList.remove('show-container');
+    setBackToDefault();
+}
+
 function setBackToDefault() {
     title.value = '';
     date.value = '';
     description.value = '';
+    editFlag = false;
+    formAddBtn.textContent = 'Add';
 }
 
 /* EVENT LISTENERS */
 /* ==================================================================================================== */
 
 taskBtn.addEventListener('click', () => modal.classList.add('open-modal'));
-closeBtn.addEventListener('click', () => modal.classList.remove('open-modal'));
-formCloseBtn.addEventListener('click', () => modal.classList.remove('open-modal'));
+closeBtn.addEventListener('click', () => {
+    setBackToDefault();
+    modal.classList.remove('open-modal');
+});
+formCloseBtn.addEventListener('click', () => {
+    setBackToDefault();
+    modal.classList.remove('open-modal');
+});
 form.addEventListener('submit', submitForm);
+clearBtn.addEventListener('click', clearItems);
 
 /* END */
 /* ==================================================================================================== */
