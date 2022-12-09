@@ -13,6 +13,7 @@ const date = get('#date');
 const description = get('#description');
 const taskList = get('.task-list');
 const container = get('.tasks');
+const formAlert = get('.alert');
 
 /* EDIT VARIABLES */
 /* ==================================================================================================== */
@@ -39,7 +40,7 @@ function submitForm(e) {
     const titleValue = title.value;
     const dateValue = date.value;
     const descriptionValue = description.value;
-    if ((titleValue, dateValue, descriptionValue && !editFlag)) {
+    if (titleValue && dateValue && descriptionValue && !editFlag) {
         let element = document.createElement('article');
         element.classList.add('task');
         element.innerHTML = `<h5 class="task-title">${titleValue}</h5>
@@ -61,14 +62,17 @@ function submitForm(e) {
         editBtn.addEventListener('click', editItem);
         deleteBtn.addEventListener('click', deleteItem);
         setBackToDefault();
-    } else if ((titleValue, dateValue, descriptionValue && editFlag)) {
+    } else if (titleValue && dateValue && descriptionValue && editFlag) {
         editTitle.textContent = title.value;
         editDate.textContent = date.value;
         editDescription.textContent = description.value;
         modal.classList.remove('open-modal');
         setBackToDefault();
     } else {
-        console.log('error, you did not submit valid values');
+        formAlert.classList.add('show-alert');
+        setTimeout(function () {
+            formAlert.classList.remove('show-alert');
+        }, 2000);
     }
 }
 

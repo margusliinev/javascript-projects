@@ -247,6 +247,7 @@ h6 {
     background-color: var(--colorWhite);
     width: 85vw;
     max-width: 500px;
+    position: relative;
 }
 
 .form-header {
@@ -341,6 +342,18 @@ h6 {
 
 .form-add-btn:hover {
     background-color: var(--colorBlue);
+}
+
+.show-alert {
+    display: unset !important;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: var(--colorRed);
 }
 
 /* END */
