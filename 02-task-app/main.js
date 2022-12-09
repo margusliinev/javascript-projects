@@ -50,8 +50,34 @@ function submitForm(e) {
                              </div>`;
         taskList.append(element);
         container.classList.add('show-container');
+        modal.classList.remove('open-modal');
+        const editBtn = element.querySelector('.edit-btn');
+        const deleteBtn = element.querySelector('.delete-btn');
+        editBtn.addEventListener('click', editItem);
+        deleteBtn.addEventListener('click', deleteItem);
+        setBackToDefault();
+    } else if ((titleValue, dateValue, descriptionValue && editFlag)) {
+        console.log('editing');
+    } else {
+        console.log('error, you did not submit valid values');
     }
-    modal.classList.remove('open-modal');
+}
+
+function editItem() {
+    console.log('edit item');
+}
+
+function deleteItem(e) {
+    e.currentTarget.parentElement.parentElement.remove();
+    if (taskList.children.length < 1) {
+        container.classList.remove('show-container');
+    }
+}
+
+function setBackToDefault() {
+    title.value = '';
+    date.value = '';
+    description.value = '';
 }
 
 /* EVENT LISTENERS */
