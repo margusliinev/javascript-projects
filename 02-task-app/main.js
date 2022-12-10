@@ -45,9 +45,9 @@ function submitForm(e) {
     if (titleValue && dateValue && descriptionValue && !editFlag) {
         let element = document.createElement('article');
         element.classList.add('task');
-        element.innerHTML = `<h5 class="task-title">${titleValue}</h5>
-                             <p class="task-date">${dateValue}</p>
-                             <p class="task-description">${descriptionValue}</p>
+        element.innerHTML = `<h5 class="task-title"></h5>
+                             <p class="task-date"></p>
+                             <p class="task-description"></p>
                              <div class="btn-container">
                                 <button type="button" class="edit-btn">
                                     <i class="fas fa-edit"></i>
@@ -56,6 +56,12 @@ function submitForm(e) {
                                     <i class="fas fa-trash"></i>
                                 </button>
                              </div>`;
+        const taskTitle = element.querySelector('.task-title');
+        const taskDate = element.querySelector('.task-date');
+        const taskDescription = element.querySelector('.task-description');
+        taskTitle.textContent = titleValue;
+        taskDate.textContent = dateValue;
+        taskDescription.textContent = descriptionValue;
         taskList.append(element);
         container.classList.add('show-container');
         modal.classList.remove('open-modal');
