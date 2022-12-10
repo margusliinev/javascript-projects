@@ -168,11 +168,14 @@ h6 {
     border: 4px solid var(--colorBlue);
     border-radius: 0.5rem;
     padding: 0.25rem;
+    max-width: 70vw;
+    margin: 0 auto;
 }
 
 .task-title {
     text-transform: capitalize;
     margin-bottom: 0.25rem;
+    word-wrap: break-word;
 }
 
 .task-date {
@@ -182,6 +185,7 @@ h6 {
 
 .task-description {
     margin-bottom: 1rem;
+    word-wrap: break-word;
 }
 
 .btn-container {

@@ -22,6 +22,8 @@ let editFlag = false;
 let editTitle;
 let editDate;
 let editDescription;
+let maxTitleLength = 30;
+let maxDescriptionLength = 100;
 
 /* FUNCTIONS */
 /* ==================================================================================================== */
@@ -113,6 +115,7 @@ function setBackToDefault() {
 /* ==================================================================================================== */
 
 taskBtn.addEventListener('click', () => modal.classList.add('open-modal'));
+clearBtn.addEventListener('click', clearItems);
 closeBtn.addEventListener('click', () => {
     setBackToDefault();
     modal.classList.remove('open-modal');
@@ -121,8 +124,17 @@ formCloseBtn.addEventListener('click', () => {
     setBackToDefault();
     modal.classList.remove('open-modal');
 });
+title.addEventListener('input', function () {
+    if (title.value.length > maxTitleLength) {
+        title.value = title.value.substring(0, maxTitleLength);
+    }
+});
+description.addEventListener('input', function () {
+    if (description.value.length > maxDescriptionLength) {
+        description.value = description.value.substring(0, maxDescriptionLength);
+    }
+});
 form.addEventListener('submit', submitForm);
-clearBtn.addEventListener('click', clearItems);
 
 /* END */
 /* ==================================================================================================== */
