@@ -40,46 +40,18 @@ function get(selection) {
 
 function submitForm(e) {
     e.preventDefault();
-    const titleValue = title.value;
-    const dateValue = date.value;
-    const descriptionValue = description.value;
+    const value = { title: title.value, date: date.value, description: description.value };
     const id = new Date().getTime().toString();
-    if (titleValue && dateValue && descriptionValue && !editFlag) {
-        let element = document.createElement('article');
-        element.classList.add('task');
-        element.setAttribute('data-id', id);
-        element.innerHTML = `<h5 class="task-title"></h5>
-                             <p class="task-date"></p>
-                             <p class="task-description"></p>
-                             <div class="btn-container">
-                                <button type="button" class="edit-btn">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button type="button" class="delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                             </div>`;
-        const taskTitle = element.querySelector('.task-title');
-        const taskDate = element.querySelector('.task-date');
-        const taskDescription = element.querySelector('.task-description');
-        taskTitle.textContent = titleValue;
-        taskDate.textContent = dateValue;
-        taskDescription.textContent = descriptionValue;
-        taskList.append(element);
-        container.classList.add('show-container');
-        modal.classList.remove('open-modal');
-        const editBtn = element.querySelector('.edit-btn');
-        const deleteBtn = element.querySelector('.delete-btn');
-        editBtn.addEventListener('click', editItem);
-        deleteBtn.addEventListener('click', deleteItem);
+    if (value && !editFlag) {
+        createTask(id, value);
         setBackToDefault();
-        addToLocalStorage(id, titleValue, dateValue, descriptionValue);
-    } else if (titleValue && dateValue && descriptionValue && editFlag) {
+        addToLocalStorage(id, value);
+    } else if (value && editFlag) {
         editTitle.textContent = title.value;
         editDate.textContent = date.value;
         editDescription.textContent = description.value;
         modal.classList.remove('open-modal');
-        editLocalStorage(editID, { title: title.value, date: date.value, description: description.value });
+        editLocalStorage(editID, value);
         setBackToDefault();
     } else {
         formAlert.classList.add('show-alert');
@@ -106,6 +78,7 @@ function deleteItem(e) {
     removeFromLocalStorage(e.currentTarget.parentElement.parentElement.dataset.id);
     e.currentTarget.parentElement.parentElement.remove();
     if (taskList.children.length < 1) {
+        localStorage.removeItem('task');
         container.classList.remove('show-container');
     }
 }
@@ -129,8 +102,8 @@ function getLocalStorage() {
     return localStorage.getItem('task') ? JSON.parse(localStorage.getItem('task')) : [];
 }
 
-function addToLocalStorage(id, title, date, description) {
-    const task = { id: id, value: { title, date, description } };
+function addToLocalStorage(id, value) {
+    const task = { id, value };
     let tasks = getLocalStorage();
     tasks.push(task);
     localStorage.setItem('task', JSON.stringify(tasks));
@@ -140,7 +113,6 @@ function editLocalStorage(id, value) {
     let items = getLocalStorage();
     items = items.map(function (item) {
         if (item.id === id) {
-            console.log(item);
             item.value = value;
         }
         return item;
@@ -156,6 +128,43 @@ function removeFromLocalStorage(id) {
         }
     });
     localStorage.setItem('task', JSON.stringify(items));
+}
+
+function loadFromLocalStorage() {
+    let items = getLocalStorage();
+    items = items.map(function (item) {
+        createTask(item.id, item.value);
+    });
+}
+
+function createTask(id, value) {
+    let element = document.createElement('article');
+    element.classList.add('task');
+    element.setAttribute('data-id', id);
+    element.innerHTML = `<h5 class="task-title"></h5>
+                             <p class="task-date"></p>
+                             <p class="task-description"></p>
+                             <div class="btn-container">
+                                <button type="button" class="edit-btn">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                             </div>`;
+    const taskTitle = element.querySelector('.task-title');
+    const taskDate = element.querySelector('.task-date');
+    const taskDescription = element.querySelector('.task-description');
+    taskTitle.textContent = value.title;
+    taskDate.textContent = value.date;
+    taskDescription.textContent = value.description;
+    taskList.append(element);
+    container.classList.add('show-container');
+    modal.classList.remove('open-modal');
+    const editBtn = element.querySelector('.edit-btn');
+    const deleteBtn = element.querySelector('.delete-btn');
+    editBtn.addEventListener('click', editItem);
+    deleteBtn.addEventListener('click', deleteItem);
 }
 
 /* EVENT LISTENERS */
@@ -182,6 +191,7 @@ description.addEventListener('input', function () {
     }
 });
 form.addEventListener('submit', submitForm);
+window.addEventListener('DOMContentLoaded', loadFromLocalStorage);
 
 /* END */
 /* ==================================================================================================== */
