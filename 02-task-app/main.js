@@ -42,11 +42,13 @@ function submitForm(e) {
     e.preventDefault();
     const value = { title: title.value, date: date.value, description: description.value };
     const id = new Date().getTime().toString();
-    if (value && !editFlag) {
+    if (value.title && value.date && value.description && !editFlag) {
         createTask(id, value);
+        modal.classList.remove('open-modal');
+        container.classList.add('show-container');
         setBackToDefault();
         addToLocalStorage(id, value);
-    } else if (value && editFlag) {
+    } else if (value.title && value.date && value.description && editFlag) {
         editTitle.textContent = title.value;
         editDate.textContent = date.value;
         editDescription.textContent = description.value;
@@ -135,6 +137,9 @@ function loadFromLocalStorage() {
     items = items.map(function (item) {
         createTask(item.id, item.value);
     });
+    if (items.length > 0) {
+        container.classList.add('show-container');
+    }
 }
 
 function createTask(id, value) {
@@ -159,8 +164,6 @@ function createTask(id, value) {
     taskDate.textContent = value.date;
     taskDescription.textContent = value.description;
     taskList.append(element);
-    container.classList.add('show-container');
-    modal.classList.remove('open-modal');
     const editBtn = element.querySelector('.edit-btn');
     const deleteBtn = element.querySelector('.delete-btn');
     editBtn.addEventListener('click', editItem);
