@@ -19,6 +19,7 @@ const formAlert = get('.alert');
 /* ==================================================================================================== */
 
 let editFlag = false;
+let editID;
 let editTitle;
 let editDate;
 let editDescription;
@@ -78,6 +79,7 @@ function submitForm(e) {
         editDate.textContent = date.value;
         editDescription.textContent = description.value;
         modal.classList.remove('open-modal');
+        editLocalStorage(editID, { title: title.value, date: date.value, description: description.value });
         setBackToDefault();
     } else {
         formAlert.classList.add('show-alert');
@@ -89,6 +91,7 @@ function submitForm(e) {
 
 function editItem(e) {
     editFlag = true;
+    editID = e.currentTarget.parentElement.parentElement.dataset.id;
     editTitle = e.currentTarget.parentElement.parentElement.firstElementChild;
     editDate = e.currentTarget.parentElement.parentElement.firstElementChild.nextElementSibling;
     editDescription = e.currentTarget.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling;
@@ -131,6 +134,18 @@ function addToLocalStorage(id, title, date, description) {
     let tasks = getLocalStorage();
     tasks.push(task);
     localStorage.setItem('task', JSON.stringify(tasks));
+}
+
+function editLocalStorage(id, value) {
+    let items = getLocalStorage();
+    items = items.map(function (item) {
+        if (item.id === id) {
+            console.log(item);
+            item.value = value;
+        }
+        return item;
+    });
+    localStorage.setItem('task', JSON.stringify(items));
 }
 
 function removeFromLocalStorage(id) {
