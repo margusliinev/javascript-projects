@@ -42,9 +42,11 @@ function submitForm(e) {
     const titleValue = title.value;
     const dateValue = date.value;
     const descriptionValue = description.value;
+    const id = new Date().getTime().toString();
     if (titleValue && dateValue && descriptionValue && !editFlag) {
         let element = document.createElement('article');
         element.classList.add('task');
+        element.setAttribute('data-id', id);
         element.innerHTML = `<h5 class="task-title"></h5>
                              <p class="task-date"></p>
                              <p class="task-description"></p>
@@ -70,6 +72,7 @@ function submitForm(e) {
         editBtn.addEventListener('click', editItem);
         deleteBtn.addEventListener('click', deleteItem);
         setBackToDefault();
+        addToLocalStorage(id, titleValue, dateValue, descriptionValue);
     } else if (titleValue && dateValue && descriptionValue && editFlag) {
         editTitle.textContent = title.value;
         editDate.textContent = date.value;
@@ -97,6 +100,7 @@ function editItem(e) {
 }
 
 function deleteItem(e) {
+    removeFromLocalStorage(e.currentTarget.parentElement.parentElement.dataset.id);
     e.currentTarget.parentElement.parentElement.remove();
     if (taskList.children.length < 1) {
         container.classList.remove('show-container');
@@ -106,6 +110,7 @@ function deleteItem(e) {
 function clearItems() {
     taskList.innerHTML = '';
     container.classList.remove('show-container');
+    localStorage.removeItem('task');
     setBackToDefault();
 }
 
@@ -115,6 +120,27 @@ function setBackToDefault() {
     description.value = '';
     editFlag = false;
     formAddBtn.textContent = 'Add';
+}
+
+function getLocalStorage() {
+    return localStorage.getItem('task') ? JSON.parse(localStorage.getItem('task')) : [];
+}
+
+function addToLocalStorage(id, title, date, description) {
+    const task = { id: id, value: { title, date, description } };
+    let tasks = getLocalStorage();
+    tasks.push(task);
+    localStorage.setItem('task', JSON.stringify(tasks));
+}
+
+function removeFromLocalStorage(id) {
+    let items = getLocalStorage();
+    items = items.filter(function (item) {
+        if (id !== item.id) {
+            return item;
+        }
+    });
+    localStorage.setItem('task', JSON.stringify(items));
 }
 
 /* EVENT LISTENERS */
