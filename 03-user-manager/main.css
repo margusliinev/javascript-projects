@@ -84,6 +84,60 @@ h6 {
 /* USER MANAGER */
 /* ==================================================================================================== */
 
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95vw;
+    }
+    .column-container:nth-child(1) {
+        width: 5%;
+    }
+    .column-container:nth-child(2) {
+        width: 15%;
+    }
+    .column-container:nth-child(3) {
+        width: 20%;
+    }
+    .column-container:nth-child(4) {
+        width: 22.5%;
+    }
+    .column-container:nth-child(5) {
+        width: 12.5%;
+    }
+    .column-container:nth-child(6) {
+        width: 15%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .container {
+        width: 90vw;
+    }
+    .column-container:nth-child(1) {
+        width: 5%;
+    }
+    .column-container:nth-child(2) {
+        width: 20%;
+    }
+    .column-container:nth-child(3) {
+        width: 22.5%;
+    }
+    .column-container:nth-child(4) {
+        width: 27.5%;
+    }
+    .column-container:nth-child(5) {
+        width: 10%;
+    }
+    .column-container:nth-child(6) {
+        width: 15%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 80vw;
+    }
+}
+
 .title {
     text-align: center;
     font-size: 2rem;
@@ -101,15 +155,71 @@ h6 {
 }
 
 .container {
-    width: 90vw;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-thead {
-    display: flex;
+.column-container {
+    width: 16.7%;
+    overflow: hidden;
+    padding: 0.5rem;
 }
 
-tbody tr {
+.users-header {
     display: flex;
+    justify-content: left;
+    border-bottom: 1px solid lightgrey;
+    gap: 1rem;
+}
+
+.user {
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px solid lightgrey;
+    gap: 1rem;
+}
+
+.adduser-btn {
+    border: transparent;
+    background-color: var(--colorBlue);
+    color: var(--colorWhite);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--borderRadius);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.adduser-btn:hover {
+    background-color: var(--colorDarkBlue);
+}
+
+.edit-btn,
+.delete-btn {
+    border: transparent;
+    padding: 0.25rem 0.5rem;
+    color: var(--colorWhite);
+    font-size: 1rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background-color: var(--colorGreen);
+}
+
+.edit-btn:hover {
+    background-color: rgb(0, 200, 0);
+}
+
+.delete-btn {
+    background-color: var(--colorRed);
+}
+
+.delete-btn:hover {
+    background-color: rgb(255, 0, 0);
 }
 
 /* END */
