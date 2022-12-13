@@ -83,5 +83,34 @@ h6 {
 
 /* USER MANAGER */
 /* ==================================================================================================== */
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    border-bottom: 1px solid lightgrey;
+    padding: 0.5rem;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.section-center {
+    height: calc(100vh - 65px);
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 90vw;
+}
+
+thead {
+    display: flex;
+}
+
+tbody tr {
+    display: flex;
+}
+
 /* END */
 /* ==================================================================================================== */
