@@ -46,10 +46,12 @@ function submitForm(e) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
     const email = emailInput.value;
+    const id = new Date().getTime().toString();
     if (validateForm(username, password, confirmPassword, email) && !editFlag) {
         counter++;
         const element = document.createElement('article');
         element.classList.add('user');
+        element.setAttribute('data-id', id);
         element.innerHTML = `<div class="column-container">
                             <p class="number">${counter}</p>
                          </div>
@@ -79,6 +81,7 @@ function submitForm(e) {
         deleteBtn.addEventListener('click', deleteItem);
         list.append(element);
         modal.classList.remove('open-modal');
+        addToLocalStorage(id, { username, password, email });
         setBackToDefault();
     } else if (validateForm(username, password, confirmPassword, email) && editFlag) {
         editUsername.textContent = usernameInput.value;
@@ -155,6 +158,17 @@ function setBackToDefault() {
     passwordInput.value = '';
     confirmPasswordInput.value = '';
     emailInput.value = '';
+}
+
+function getLocalStorage() {
+    return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
+}
+
+function addToLocalStorage(id, value) {
+    const user = { id, value };
+    let users = getLocalStorage();
+    users.push(user);
+    localStorage.setItem('user', JSON.stringify(users));
 }
 
 /* EVENT LISTENERS */
