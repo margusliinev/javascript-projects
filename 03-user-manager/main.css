@@ -222,5 +222,132 @@ h6 {
     background-color: rgb(255, 0, 0);
 }
 
+/* FORM MODAL */
+/* ==================================================================================================== */
+
+.open-modal {
+    display: grid !important;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    place-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.form {
+    background-color: var(--colorWhite);
+    width: 80vw;
+    max-width: 500px;
+    position: relative;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem;
+}
+
+.form-header h4 {
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: transparent;
+    font-size: 2rem;
+    color: rgb(90, 90, 90);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    color: var(--colorBlack);
+}
+
+.form-control {
+    padding: 1rem;
+    display: grid;
+    position: relative;
+}
+
+.form-control input::placeholder {
+    font-size: 0.875rem;
+    font-family: 'Poppins', 'FontAwesome';
+    color: var(--colorGrey);
+}
+
+.form-control label {
+    margin-bottom: 0.5rem;
+}
+
+.form-control input {
+    color: black;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border: 1px solid lightgrey;
+    border-radius: var(--borderRadius);
+}
+
+.form-control input:focus {
+    outline: 3px solid var(--colorLightBlue);
+}
+
+.form-btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.form-btn-container button {
+    font-size: 1rem;
+    text-transform: capitalize;
+    border: transparent;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-close-btn {
+    background-color: var(--colorGrey);
+    color: var(--colorWhite);
+}
+
+.form-close-btn:hover {
+    background-color: rgb(90, 90, 90);
+}
+
+.form-add-btn {
+    background-color: rgb(38, 134, 212);
+    color: var(--colorWhite);
+}
+
+.form-add-btn:hover {
+    background-color: var(--colorBlue);
+}
+
+.show-alert {
+    display: unset !important;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: var(--colorRed);
+}
+
 /* END */
 /* ==================================================================================================== */
