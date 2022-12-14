@@ -4,6 +4,7 @@
 const addUserBtn = get('.adduser-btn');
 const closeBtn = get('.close-btn');
 const formCloseBtn = get('.form-close-btn');
+const formAddBtn = get('.form-add-btn');
 const modal = get('.modal');
 const form = get('.form');
 const usernameInput = get('#username');
@@ -17,6 +18,11 @@ const formAlert = get('.alert');
 /* ==================================================================================================== */
 
 let counter = 0;
+let editFlag = false;
+let editUsername;
+let editPassword;
+let editConfirmPassword;
+let editEmail;
 usernameInput.maxLength = 30;
 passwordInput.maxLength = 30;
 confirmPasswordInput.maxLength = 30;
@@ -40,7 +46,7 @@ function submitForm(e) {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
     const email = emailInput.value;
-    if (validateForm(username, password, confirmPassword, email)) {
+    if (validateForm(username, password, confirmPassword, email) && !editFlag) {
         counter++;
         const element = document.createElement('article');
         element.classList.add('user');
@@ -72,6 +78,13 @@ function submitForm(e) {
         editBtn.addEventListener('click', editItem);
         deleteBtn.addEventListener('click', deleteItem);
         list.append(element);
+        modal.classList.remove('open-modal');
+        setBackToDefault();
+    } else if (validateForm(username, password, confirmPassword, email) && editFlag) {
+        editUsername.textContent = usernameInput.value;
+        editPassword.textContent = passwordInput.value;
+        editConfirmPassword.textContent = confirmPasswordInput.value;
+        editEmail.textContent = emailInput.value;
         modal.classList.remove('open-modal');
         setBackToDefault();
     } else {
@@ -112,7 +125,17 @@ function deleteItem(e) {
 }
 
 function editItem(e) {
-    console.log(e.currentTarget);
+    editFlag = true;
+    editUsername = e.currentTarget.parentElement.parentElement.querySelector('.username');
+    editPassword = e.currentTarget.parentElement.parentElement.querySelector('.password');
+    editConfirmPassword = e.currentTarget.parentElement.parentElement.querySelector('.password');
+    editEmail = e.currentTarget.parentElement.parentElement.querySelector('.email');
+    usernameInput.value = editUsername.textContent;
+    passwordInput.value = editPassword.textContent;
+    confirmPasswordInput.value = editPassword.textContent;
+    emailInput.value = editEmail.textContent;
+    modal.classList.add('open-modal');
+    formAddBtn.textContent = 'Edit';
 }
 
 function displayAlert(message) {
@@ -126,6 +149,8 @@ function displayAlert(message) {
 }
 
 function setBackToDefault() {
+    editFlag = false;
+    formAddBtn.textContent = 'Add';
     usernameInput.value = '';
     passwordInput.value = '';
     confirmPasswordInput.value = '';
@@ -136,8 +161,14 @@ function setBackToDefault() {
 /* ==================================================================================================== */
 
 addUserBtn.addEventListener('click', () => modal.classList.add('open-modal'));
-closeBtn.addEventListener('click', () => modal.classList.remove('open-modal'));
-formCloseBtn.addEventListener('click', () => modal.classList.remove('open-modal'));
+closeBtn.addEventListener('click', () => {
+    setBackToDefault();
+    modal.classList.remove('open-modal');
+});
+formCloseBtn.addEventListener('click', () => {
+    setBackToDefault();
+    modal.classList.remove('open-modal');
+});
 form.addEventListener('submit', submitForm);
 
 /* END */
