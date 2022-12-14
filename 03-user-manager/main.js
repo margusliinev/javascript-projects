@@ -11,11 +11,16 @@ const passwordInput = get('#password');
 const confirmPasswordInput = get('#confirm-password');
 const emailInput = get('#email');
 const list = get('.users-list');
+const formAlert = get('.alert');
 
 /* EDIT VARIABLES */
 /* ==================================================================================================== */
 
 let counter = 0;
+usernameInput.maxLength = 30;
+passwordInput.maxLength = 30;
+confirmPasswordInput.maxLength = 30;
+emailInput.maxLength = 50;
 
 /* FUNCTIONS */
 /* ==================================================================================================== */
@@ -31,14 +36,15 @@ function get(selection) {
 
 function submitForm(e) {
     e.preventDefault();
-    counter++;
     const username = usernameInput.value;
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
     const email = emailInput.value;
-    const element = document.createElement('article');
-    element.classList.add('user');
-    element.innerHTML = `<div class="column-container">
+    if (validateForm(username, password, confirmPassword, email)) {
+        counter++;
+        const element = document.createElement('article');
+        element.classList.add('user');
+        element.innerHTML = `<div class="column-container">
                             <p class="number">${counter}</p>
                          </div>
                          <div class="column-container">
@@ -61,9 +67,46 @@ function submitForm(e) {
                             </button>
                          </div>
                         `;
-    list.append(element);
-    modal.classList.remove('open-modal');
-    setBackToDefault();
+        list.append(element);
+        modal.classList.remove('open-modal');
+        setBackToDefault();
+    } else {
+        return;
+    }
+}
+
+function validateForm(username, password, confirmPassword, email) {
+    if (username && password && confirmPassword && email) {
+        if (password === confirmPassword) {
+            const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
+            if (password.match(passwordRegex)) {
+                return true;
+            } else {
+                formAlert.textContent = 'Password must have at least 8 characters, 1 number and letter.';
+                formAlert.classList.add('show-alert');
+                setTimeout(function () {
+                    formAlert.textContent = 'Please fill out all the fields!';
+                    formAlert.classList.remove('show-alert');
+                }, 2000);
+                return false;
+            }
+        } else {
+            formAlert.textContent = 'Passwords do not match!';
+            formAlert.classList.add('show-alert');
+            setTimeout(function () {
+                formAlert.textContent = 'Please fill out all the fields!';
+                formAlert.classList.remove('show-alert');
+            }, 2000);
+            return false;
+        }
+    } else {
+        formAlert.textContent = 'Please fill out all fields!';
+        formAlert.classList.add('show-alert');
+        setTimeout(function () {
+            formAlert.classList.remove('show-alert');
+        }, 2000);
+        return false;
+    }
 }
 
 function setBackToDefault() {
