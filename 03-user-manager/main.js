@@ -67,6 +67,10 @@ function submitForm(e) {
                             </button>
                          </div>
                         `;
+        const editBtn = element.querySelector('.edit-btn');
+        const deleteBtn = element.querySelector('.delete-btn');
+        editBtn.addEventListener('click', editItem);
+        deleteBtn.addEventListener('click', deleteItem);
         list.append(element);
         modal.classList.remove('open-modal');
         setBackToDefault();
@@ -77,36 +81,48 @@ function submitForm(e) {
 
 function validateForm(username, password, confirmPassword, email) {
     if (username && password && confirmPassword && email) {
-        if (password === confirmPassword) {
-            const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
-            if (password.match(passwordRegex)) {
-                return true;
+        if (username.length >= 3) {
+            if (password === confirmPassword) {
+                const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
+                if (password.match(passwordRegex)) {
+                    return true;
+                } else {
+                    displayAlert('Password must have at least 8 characters, 1 number and letter.');
+                }
             } else {
-                formAlert.textContent = 'Password must have at least 8 characters, 1 number and letter.';
-                formAlert.classList.add('show-alert');
-                setTimeout(function () {
-                    formAlert.textContent = 'Please fill out all the fields!';
-                    formAlert.classList.remove('show-alert');
-                }, 2000);
-                return false;
+                displayAlert('Passwords do not match!');
             }
         } else {
-            formAlert.textContent = 'Passwords do not match!';
-            formAlert.classList.add('show-alert');
-            setTimeout(function () {
-                formAlert.textContent = 'Please fill out all the fields!';
-                formAlert.classList.remove('show-alert');
-            }, 2000);
-            return false;
+            displayAlert('Username must be at least 3 characters long!');
         }
     } else {
-        formAlert.textContent = 'Please fill out all fields!';
-        formAlert.classList.add('show-alert');
-        setTimeout(function () {
-            formAlert.classList.remove('show-alert');
-        }, 2000);
-        return false;
+        displayAlert('Please fill out all fields!');
     }
+}
+
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    element.remove();
+    counter--;
+    const users = [...list.querySelectorAll('.user')];
+    users.forEach(function (user, index) {
+        const number = user.querySelector('.number');
+        number.textContent = index + 1;
+    });
+}
+
+function editItem(e) {
+    console.log(e.currentTarget);
+}
+
+function displayAlert(message) {
+    formAlert.textContent = message;
+    formAlert.classList.add('show-alert');
+    setTimeout(function () {
+        formAlert.textContent = '';
+        formAlert.classList.remove('show-alert');
+    }, 2000);
+    return false;
 }
 
 function setBackToDefault() {
