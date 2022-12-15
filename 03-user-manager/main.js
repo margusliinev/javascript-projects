@@ -18,6 +18,7 @@ const formAlert = get('.alert');
 /* ==================================================================================================== */
 
 let counter = 0;
+let editID;
 let editFlag = false;
 let editUsername;
 let editPassword;
@@ -49,37 +50,7 @@ function submitForm(e) {
     const id = new Date().getTime().toString();
     if (validateForm(username, password, confirmPassword, email) && !editFlag) {
         counter++;
-        const element = document.createElement('article');
-        element.classList.add('user');
-        element.setAttribute('data-id', id);
-        element.innerHTML = `<div class="column-container">
-                            <p class="number">${counter}</p>
-                         </div>
-                         <div class="column-container">
-                            <p class="username">${username}</p>
-                         </div>
-                         <div class="column-container">
-                            <p class="password">${password}</p>
-                         </div>
-                         <div class="column-container">
-                            <p class="email">${email}</p>
-                         </div>
-                         <div class="column-container">
-                            <button type="button" class="edit-btn">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                         </div>
-                         <div class="column-container">
-                            <button type="button" class="delete-btn">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                         </div>
-                        `;
-        const editBtn = element.querySelector('.edit-btn');
-        const deleteBtn = element.querySelector('.delete-btn');
-        editBtn.addEventListener('click', editItem);
-        deleteBtn.addEventListener('click', deleteItem);
-        list.append(element);
+        createUser(counter, id, username, password, email);
         modal.classList.remove('open-modal');
         addToLocalStorage(id, { username, password, email });
         setBackToDefault();
@@ -89,6 +60,7 @@ function submitForm(e) {
         editConfirmPassword.textContent = confirmPasswordInput.value;
         editEmail.textContent = emailInput.value;
         modal.classList.remove('open-modal');
+        editLocalStorage(editID, { username: usernameInput.value, password: passwordInput.value, email: emailInput.value });
         setBackToDefault();
     } else {
         return;
@@ -118,6 +90,7 @@ function validateForm(username, password, confirmPassword, email) {
 
 function deleteItem(e) {
     const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
     element.remove();
     counter--;
     const users = [...list.querySelectorAll('.user')];
@@ -125,10 +98,15 @@ function deleteItem(e) {
         const number = user.querySelector('.number');
         number.textContent = index + 1;
     });
+    removeFromLocalStorage(id);
+    if (list.children.length < 1) {
+        localStorage.removeItem('user');
+    }
 }
 
 function editItem(e) {
     editFlag = true;
+    editID = e.currentTarget.parentElement.parentElement.dataset.id;
     editUsername = e.currentTarget.parentElement.parentElement.querySelector('.username');
     editPassword = e.currentTarget.parentElement.parentElement.querySelector('.password');
     editConfirmPassword = e.currentTarget.parentElement.parentElement.querySelector('.password');
@@ -160,6 +138,40 @@ function setBackToDefault() {
     emailInput.value = '';
 }
 
+function createUser(counter, id, username, password, email) {
+    const element = document.createElement('article');
+    element.classList.add('user');
+    element.setAttribute('data-id', id);
+    element.innerHTML = `<div class="column-container">
+                            <p class="number">${counter}</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="username">${username}</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="password">${password}</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="email">${email}</p>
+                         </div>
+                         <div class="column-container">
+                            <button type="button" class="edit-btn">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                         </div>
+                         <div class="column-container">
+                            <button type="button" class="delete-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                         </div>
+                        `;
+    const editBtn = element.querySelector('.edit-btn');
+    const deleteBtn = element.querySelector('.delete-btn');
+    editBtn.addEventListener('click', editItem);
+    deleteBtn.addEventListener('click', deleteItem);
+    list.append(element);
+}
+
 function getLocalStorage() {
     return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
 }
@@ -169,6 +181,38 @@ function addToLocalStorage(id, value) {
     let users = getLocalStorage();
     users.push(user);
     localStorage.setItem('user', JSON.stringify(users));
+}
+
+function editLocalStorage(id, value) {
+    let users = getLocalStorage();
+    const newUsers = users.map(function (user) {
+        if (user.id === id) {
+            user.value.username = value.username;
+            user.value.password = value.password;
+            user.value.email = value.email;
+        }
+        return user;
+    });
+    console.log(newUsers);
+    localStorage.setItem('user', JSON.stringify(newUsers));
+}
+
+function removeFromLocalStorage(id) {
+    let users = getLocalStorage();
+    const newUsers = users.filter(function (user) {
+        if (user.id !== id) {
+            return user;
+        }
+    });
+    localStorage.setItem('user', JSON.stringify(newUsers));
+}
+
+function loadFromLocalStorage() {
+    let users = getLocalStorage();
+    users.forEach(function (user) {
+        counter++;
+        return createUser(counter, user.id, user.value.username, user.value.password, user.value.email);
+    });
 }
 
 /* EVENT LISTENERS */
@@ -184,6 +228,7 @@ formCloseBtn.addEventListener('click', () => {
     modal.classList.remove('open-modal');
 });
 form.addEventListener('submit', submitForm);
+window.addEventListener('DOMContentLoaded', loadFromLocalStorage);
 
 /* END */
 /* ==================================================================================================== */
