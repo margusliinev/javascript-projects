@@ -179,7 +179,7 @@ h6 {
     gap: 1rem;
 }
 
-.adduser-btn {
+.add-btn {
     border: transparent;
     background-color: var(--colorBlue);
     color: var(--colorWhite);
@@ -191,8 +191,24 @@ h6 {
     transition: var(--transition);
 }
 
-.adduser-btn:hover {
+.add-btn:hover {
     background-color: var(--colorDarkBlue);
+}
+
+.clear-btn {
+    border: transparent;
+    background-color: var(--colorRed);
+    color: var(--colorWhite);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--borderRadius);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.clear-btn:hover {
+    background-color: red;
 }
 
 .edit-btn,

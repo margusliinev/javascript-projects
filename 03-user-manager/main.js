@@ -1,10 +1,11 @@
 /* SELECT ITEMS */
 /* ==================================================================================================== */
 
-const addUserBtn = get('.adduser-btn');
+const addUserBtn = get('.add-btn');
 const closeBtn = get('.close-btn');
 const formCloseBtn = get('.form-close-btn');
 const formAddBtn = get('.form-add-btn');
+const clearBtn = get('.clear-btn');
 const modal = get('.modal');
 const form = get('.form');
 const usernameInput = get('#username');
@@ -193,7 +194,6 @@ function editLocalStorage(id, value) {
         }
         return user;
     });
-    console.log(newUsers);
     localStorage.setItem('user', JSON.stringify(newUsers));
 }
 
@@ -215,6 +215,54 @@ function loadFromLocalStorage() {
     });
 }
 
+function clearUsers() {
+    list.innerHTML = '';
+    localStorage.removeItem('user');
+    counter = 0;
+    setBackToDefault();
+}
+
+function generateFirstUser() {
+    const id = new Date().getTime().toString();
+    if (list.children.length < 1) {
+        const element = document.createElement('article');
+        element.classList.add('user');
+        element.setAttribute('data-id', id);
+        element.innerHTML = `<div class="column-container">
+                            <p class="number">1</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="username">Test</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="password">SecretPassword</p>
+                         </div>
+                         <div class="column-container">
+                            <p class="email">test@gmail.com</p>
+                         </div>
+                         <div class="column-container">
+                            <button type="button" class="edit-btn">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                         </div>
+                         <div class="column-container">
+                            <button type="button" class="delete-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                         </div>
+                        `;
+        const editBtn = element.querySelector('.edit-btn');
+        const deleteBtn = element.querySelector('.delete-btn');
+        editBtn.addEventListener('click', editItem);
+        deleteBtn.addEventListener('click', deleteItem);
+        list.append(element);
+        const username = element.querySelector('.username').textContent;
+        const password = element.querySelector('.password').textContent;
+        const email = element.querySelector('.email').textContent;
+        addToLocalStorage(id, { username, password, email });
+    }
+}
+
 /* EVENT LISTENERS */
 /* ==================================================================================================== */
 
@@ -227,8 +275,10 @@ formCloseBtn.addEventListener('click', () => {
     setBackToDefault();
     modal.classList.remove('open-modal');
 });
+clearBtn.addEventListener('click', clearUsers);
 form.addEventListener('submit', submitForm);
 window.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+window.addEventListener('DOMContentLoaded', generateFirstUser);
 
 /* END */
 /* ==================================================================================================== */
