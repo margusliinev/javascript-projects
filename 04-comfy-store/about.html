@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Margus Liinev" />
+        <link rel="stylesheet" href="./styles/main.css" />
+        <link rel="stylesheet" href="../fontawesome-free-6.2.0-web/css/all.css" />
+        <script defer type="module" src="./scripts/pages/about.js"></script>
+        <title>About || Comfy</title>
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <!-- ==================================================================================================== -->
+
+        <nav class="navbar page">
+            <div class="nav-center">
+                <div>
+                    <button class="toggle-nav">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="nav-links">
+                        <li>
+                            <a href="index.html" class="nav-link">home</a>
+                        </li>
+                        <li>
+                            <a href="products.html" class="nav-link">products</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="nav-link">about</a>
+                        </li>
+                    </ul>
+                </div>
+                <img src="./images/logo-black.svg" class="nav-logo" alt="logo" />
+                <div class="toggle-container">
+                    <button class="toggle-cart"><i class="fas fa-shopping-cart"></i></button>
+                    <span class="cart-item-count">1</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <!-- ==================================================================================================== -->
+
+        <div class="page-hero">
+            <h2 class="page-hero-title section-center">about us</h2>
+        </div>
+
+        <!-- ABOUT -->
+        <!-- ==================================================================================================== -->
+
+        <section>
+            <div class="about-title section-center">
+                <h2><span>/</span>history</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae architecto numquam rem ipsam voluptas cupiditate unde consequatur autem repellendus quod sapiente velit reprehenderit enim nesciunt necessitatibus nam ab omnis aut deserunt, quaerat amet culpa alias quos. Soluta nisi fugiat odit dolor expedita culpa voluptates quis ipsa dolorum repellat, itaque possimus nulla, optio reprehenderit minus recusandae. Iusto reiciendis similique rem architecto quam? Architecto iure quod eveniet minus similique autem minima, odit, quo inventore asperiores praesentium ducimus! Esse iusto odit cupiditate sit.</p>
+            </div>
+            <div class="about-title section-center">
+                <h2><span>/</span>people</h2>
+            </div>
+            <div class="about-people section-center">
+                <div class="img-container">
+                    <img src="./images/person1.jpg" alt="person" />
+                </div>
+                <div class="img-container">
+                    <img src="./images/person2.jpg" alt="person" />
+                </div>
+                <div class="img-container">
+                    <img src="./images/person3.jpg" alt="person" />
+                </div>
+            </div>
+        </section>
+
+        <!-- SIDEBAR -->
+        <!-- ==================================================================================================== -->
+
+        <div class="sidebar-overlay">
+            <aside class="sidebar">
+                <button class="sidebar-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="sidebar-links">
+                    <li>
+                        <a href="index.html" class="sidebar-link"><i class="fas fa-home fa-fw"></i>home</a>
+                    </li>
+                    <li>
+                        <a href="products.html" class="sidebar-link"><i class="fas fa-couch fa-fw"></i>products</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="sidebar-link"><i class="fas fa-book fa-fw"></i>about</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- CART -->
+        <!-- ==================================================================================================== -->
+
+        <div class="cart-overlay">
+            <aside class="cart">
+                <button class="cart-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <header>
+                    <h3>your bag</h3>
+                </header>
+                <div class="cart-items">
+                    <article class="cart-item" data-id="">
+                        <img src="./images/main-bcg.jpeg" class="cart-item-img" alt="item" />
+                        <div>
+                            <h4 class="cart-item-name">high-back bench</h4>
+                            <p class="cart-item-price">$13.99</p>
+                            <button class="cart-item-remove-btn">remove</button>
+                        </div>
+                        <div>
+                            <button class="cart-item-increase-btn">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            <p class="cart-item-amount">1</p>
+                            <button class="cart-item-decrease-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+                <footer>
+                    <h3 class="cart-total">total : $13.99</h3>
+                    <button class="cart-checkout btn">checkout</button>
+                </footer>
+            </aside>
+        </div>
+
+        <!-- END -->
+        <!-- ==================================================================================================== -->
+    </body>
+</html>

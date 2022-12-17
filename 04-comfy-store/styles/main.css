@@ -107,7 +107,7 @@ h6 {
 
 .section-center {
     width: 90vw;
-    max-width: var(--max-width);
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -136,6 +136,7 @@ h6 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    font-weight: 500;
 }
 
 .page-loading {
@@ -279,7 +280,7 @@ h6 {
 .hero {
     min-height: 100vh;
     margin-top: -6rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/main-bcg.jpeg) center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/main-bcg.jpeg) center/cover;
     display: grid;
     place-items: center;
     color: var(--colorWhite);
@@ -316,6 +317,23 @@ h6 {
 .hero-btn:hover {
     background: var(--colorWhite);
     color: var(--colorPrimary-5);
+}
+
+.page-hero {
+    min-height: 20vh;
+    display: grid;
+    place-items: center;
+    background: var(--colorGrey-10);
+    color: var(--colorGrey-5);
+    margin-bottom: 3rem;
+}
+
+.page-hero-title {
+    font-weight: 500;
+    text-transform: capitalize;
+    max-width: 50rem;
+    margin: 0 auto;
+    text-align: center;
 }
 
 @media screen and (min-width: 800px) {
@@ -530,24 +548,160 @@ h6 {
     padding: 0.25rem;
 }
 
-/* TITLE */
+/* FEATURED PRODUCTS */
 /* ==================================================================================================== */
 
-.title h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.featured-title h2 {
     font-weight: 500;
+    max-width: 50rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    text-align: center;
 }
 
-.title span {
+.featured-title span {
     color: var(--colorPrimary-5);
     font-size: 0.85em;
-    margin-right: 1rem;
 }
 
-/* PRODUCT */
+.featured-center {
+    margin: 3rem auto 2rem auto;
+    display: grid;
+    gap: 1rem;
+    min-height: 6rem;
+    position: relative;
+}
+
+.featured .btn {
+    display: block;
+    width: 11rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+    .featured-center {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .featured-center {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* ABOUT */
 /* ==================================================================================================== */
+
+.about-title h2 {
+    font-weight: 500;
+    max-width: 50rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.about-title span {
+    color: var(--colorPrimary-5);
+    font-size: 0.85em;
+    margin-right: 0.5rem;
+}
+
+.about-title p {
+    line-height: 2;
+    max-width: 50rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.about-people {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    max-width: 50rem;
+}
+
+@media screen and (min-width: 600px) {
+    .about-people {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .about-people {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* PRODUCTS */
+/* ==================================================================================================== */
+
+.products {
+    width: 90vw;
+    display: grid;
+    grid-gap: 1rem;
+    margin: 4rem auto;
+    max-width: 1200px;
+    position: relative;
+}
+
+.filters-container {
+    position: sticky;
+    top: 1rem;
+}
+
+.filters h4 {
+    font-weight: 500;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.search-input {
+    padding: 0.5rem;
+    background: var(--colorGrey-9);
+    border-radius: var(--borderRadius);
+    border-color: transparent;
+    letter-spacing: var(--letterSpacing);
+}
+
+.search-input::placeholder {
+    text-transform: capitalize;
+}
+
+.company-btn {
+    display: block;
+    margin: 0.25em 0;
+    padding: 0.25rem;
+    text-transform: capitalize;
+    background: transparent;
+    border-color: transparent;
+    letter-spacing: var(--letterSpacing);
+    color: var(--colorGrey-5);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.company-btn:hover {
+    color: var(--colorGrey-3);
+}
+
+.price-filter {
+    background: var(--colorGrey-5) !important;
+    color: var(--colorGrey-5);
+}
+
+.filter-error {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 4rem;
+}
 
 .product-img {
     height: 15rem;
@@ -609,113 +763,6 @@ h6 {
     font-weight: 700;
 }
 
-.featured-center {
-    margin: 3rem auto 2rem auto;
-    display: grid;
-    gap: 1rem;
-    min-height: 6rem;
-    position: relative;
-}
-
-.featured .btn {
-    display: block;
-    width: 11rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-@media screen and (min-width: 992px) {
-    .featured-center {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .featured-center {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    .product .img {
-        height: 13rem;
-    }
-}
-
-/* ABOUT */
-/* ==================================================================================================== */
-
-.about-text {
-    line-height: 2;
-    max-width: 45em;
-    margin: 0 auto;
-    margin-top: 2rem;
-}
-
-/* PRODUCTS */
-/* ==================================================================================================== */
-
-.products {
-    width: 90vw;
-    display: grid;
-    grid-gap: 1rem;
-    margin: 4rem auto;
-    max-width: 1200px;
-    position: relative;
-}
-
-.filters-container {
-    position: sticky;
-    top: 1rem;
-}
-
-.filters h4 {
-    font-weight: 500;
-    margin: 1.5rem 0 0.5rem;
-}
-
-.search-input {
-    padding: 0.5rem;
-    background: var(--colorGrey-10);
-    border-radius: var(--borderRadius);
-    border-color: transparent;
-    letter-spacing: var(--letterSpacing);
-}
-
-.search-input::placeholder {
-    text-transform: capitalize;
-}
-
-.company-btn {
-    display: block;
-    margin: 0.25em 0;
-    padding: 0.25rem;
-    text-transform: capitalize;
-    background: transparent;
-    border-color: transparent;
-    letter-spacing: var(--letterSpacing);
-    color: var(--colorGrey-5);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.company-btn:hover {
-    color: var(--colorGrey-3);
-}
-
-.price-filter {
-    background: var(--colorGrey-5) !important;
-    color: var(--colorGrey-5);
-}
-
-.filter-error {
-    position: absolute;
-    top: 5rem;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    margin-top: 4rem;
-}
-
 @media screen and (min-width: 768px) {
     .products {
         grid-template-columns: 200px 1fr;
@@ -749,20 +796,14 @@ h6 {
     }
 }
 
-/* SINGLE PAGE PRODUCT */
+@media screen and (min-width: 1200px) {
+    .product .img {
+        height: 13rem;
+    }
+}
+
+/* PRODUCT */
 /* ==================================================================================================== */
-
-.page-hero {
-    min-height: 20vh;
-    display: grid;
-    place-items: center;
-    background: var(--colorGrey-10);
-    color: var(--colorGrey-5);
-}
-
-.page-hero-title {
-    font-weight: 500;
-}
 
 .single-product {
     padding: 2rem 0;
@@ -771,7 +812,7 @@ h6 {
 .single-product-center {
     margin: 2rem auto;
     display: grid;
-    gap: 1rem 2rem;
+    gap: 1rem 3rem;
 }
 
 .single-product-img {
@@ -780,18 +821,24 @@ h6 {
     object-fit: cover;
 }
 
+.single-product-title {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
 .single-product-company {
     font-size: 1.2rem;
-    color: var(--colorGrey-8);
+    color: var(--colorGrey-7);
     text-transform: uppercase;
     letter-spacing: var(--letterSpacing);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
 }
 
 .single-product-price {
     color: var(--colorGrey-3);
     font-size: 1.25rem;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .product-color {
@@ -806,6 +853,7 @@ h6 {
 .single-product-desc {
     max-width: 25em;
     line-height: 1.8;
+    margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 992px) {
