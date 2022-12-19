@@ -1,4 +1,5 @@
 import { formatPrice } from './utils.js';
+import { addToCart } from './setupCart.js';
 
 function displayProducts(products, section) {
     const displayedProducts = products
@@ -23,6 +24,11 @@ function displayProducts(products, section) {
         })
         .join('');
     section.innerHTML = displayedProducts;
+    section.addEventListener('click', function (e) {
+        if (e.target.parentElement.classList.contains('product-cart-btn')) {
+            addToCart(e.target.parentElement.dataset.id);
+        }
+    });
 }
 
 export { displayProducts };
