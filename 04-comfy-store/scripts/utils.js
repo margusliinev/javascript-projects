@@ -7,6 +7,14 @@ function get(selection) {
     }
 }
 
+function formatPrice(price) {
+    let formattedPrice = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    }).format((price / 100).toFixed(2));
+    return formattedPrice;
+}
+
 function getStorageItem(item) {
     let storageItem = localStorage.getItem(item);
     if (storageItem) {
@@ -21,4 +29,4 @@ function setStorageItem(name, item) {
     localStorage.setItem(name, JSON.stringify(item));
 }
 
-export { get, getStorageItem, setStorageItem };
+export { get, formatPrice, getStorageItem, setStorageItem };

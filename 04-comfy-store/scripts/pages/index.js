@@ -1,5 +1,6 @@
 import '../toggleSidebar.js';
 import '../toggleCart.js';
+import { get } from '../utils.js';
 import { fetchProducts } from '../fetchProducts.js';
 import { store, setupStore } from '../store.js';
 import { displayProducts } from '../displayProducts.js';
@@ -9,7 +10,7 @@ async function init() {
     if (products) {
         setupStore(products);
         const featured = store.filter((product) => product.featured === true);
-        displayProducts(featured, document.querySelector('.featured-center'));
+        displayProducts(featured, get('.featured-center'));
     }
 }
 
