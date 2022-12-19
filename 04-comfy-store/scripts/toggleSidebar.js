@@ -1,4 +1,4 @@
-import { get } from './get.js';
+import { get } from './utils.js';
 
 const sidebar = get('.sidebar-overlay');
 const navBtn = get('.toggle-nav');

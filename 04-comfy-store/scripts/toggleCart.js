@@ -1,4 +1,4 @@
-import { get } from './get.js';
+import { get } from './utils.js';
 
 const cart = get('.cart-overlay');
 const cartBtn = get('.toggle-cart');
