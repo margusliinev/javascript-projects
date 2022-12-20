@@ -17,7 +17,7 @@ function setupSearch(store) {
             displayProducts(newStore, get('.products-container'));
             if (newStore.length < 1) {
                 const products = get('.products-container');
-                products.innerHTML = `Sorry, no products matched your search.`;
+                products.innerHTML = 'Sorry, no products matched your search.';
             }
         } else {
             displayProducts(store, get('.products-container'));
@@ -46,6 +46,28 @@ function setupCompanies(store) {
     });
 }
 
-function setupPrice() {}
+function setupPrice(store) {
+    const priceInput = get('.price-filter');
+    const priceValue = get('.price-value');
+
+    let maxPrice = store.map((product) => product.price);
+    maxPrice = Math.max(...maxPrice);
+    maxPrice = Math.ceil(maxPrice / 100);
+    priceInput.value = maxPrice;
+    priceInput.max = maxPrice;
+    priceInput.min = 0;
+    priceValue.textContent = `Value : $${maxPrice}`;
+
+    priceInput.addEventListener('input', function () {
+        const value = parseInt(priceInput.value);
+        priceValue.textContent = `Value : $${value}`;
+        let newStore = store.filter((product) => product.price / 100 <= value);
+        displayProducts(newStore, get('.products-container'));
+        if (newStore.length < 1) {
+            const products = get('.products-container');
+            products.innerHTML = 'Sorry, no products matched your search.';
+        }
+    });
+}
 
 export { setupSearch, setupCompanies, setupPrice };
