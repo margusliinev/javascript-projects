@@ -680,27 +680,18 @@ h6 {
     background: transparent;
     border-color: transparent;
     letter-spacing: var(--letterSpacing);
-    color: var(--colorGrey-5);
+    color: var(--colorGrey-4);
     cursor: pointer;
     transition: var(--transition);
 }
 
 .company-btn:hover {
-    color: var(--colorGrey-3);
+    color: black;
 }
 
 .price-filter {
     background: var(--colorGrey-5) !important;
     color: var(--colorGrey-5);
-}
-
-.filter-error {
-    position: absolute;
-    top: 5rem;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    margin-top: 4rem;
 }
 
 .product-img {
