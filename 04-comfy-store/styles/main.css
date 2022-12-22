@@ -154,6 +154,16 @@ h6 {
     justify-content: center;
 }
 
+.fixed-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--colorWhite);
+    box-shadow: var(--shadowDark);
+    z-index: 5;
+}
+
 .nav-center {
     width: 90vw;
     max-width: 1200px;

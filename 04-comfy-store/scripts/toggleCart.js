@@ -6,9 +6,3 @@ const cartCloseBtn = get('.cart-close');
 
 cartBtn.addEventListener('click', () => cart.classList.add('show'));
 cartCloseBtn.addEventListener('click', () => cart.classList.remove('show'));
-
-function openCart() {
-    cart.classList.add('show');
-}
-
-export { openCart };

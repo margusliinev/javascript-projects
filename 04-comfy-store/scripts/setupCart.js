@@ -1,5 +1,4 @@
 import { getStorageItem, setStorageItem, formatPrice, get } from './utils.js';
-import { openCart } from './toggleCart.js';
 import { findProduct } from './store.js';
 
 const cartItemCountDOM = get('.cart-item-count');
@@ -60,7 +59,6 @@ function addToCart(id) {
     displayCartItemCount();
     displayCartTotal();
     setStorageItem('cart', cart);
-    openCart();
 }
 
 function displayCartItemsDOM() {

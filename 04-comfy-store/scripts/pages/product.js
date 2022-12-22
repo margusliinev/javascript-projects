@@ -1,9 +1,12 @@
 import '../toggleSidebar.js';
 import '../toggleCart.js';
 import '../setupCart.js';
+import { fixedNavbar } from '../navbar.js';
 import { get, formatPrice } from '../utils.js';
 import { singleProductUrl } from '../fetchProducts.js';
 import { addToCart } from '../setupCart.js';
+
+fixedNavbar();
 
 const centerDOM = get('.single-product-center');
 const pageTitleDOM = get('.page-hero-title');

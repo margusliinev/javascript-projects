@@ -1,10 +1,14 @@
 import '../toggleSidebar.js';
 import '../toggleCart.js';
+import '../setupCart.js';
+import { fixedNavbar } from '../navbar.js';
 import { get } from '../utils.js';
 import { fetchProducts } from '../fetchProducts.js';
 import { store, setupStore } from '../store.js';
 import { displayProducts } from '../displayProducts.js';
 import { setupSearch, setupCompanies, setupPrice } from '../filters.js';
+
+fixedNavbar();
 
 async function init() {
     if (store.length === 0) {
