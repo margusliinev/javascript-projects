@@ -14,13 +14,13 @@ function setupSearch(store) {
                     return product;
                 }
             });
-            displayProducts(newStore, get('.products-container'));
+            displayProducts(newStore, get('.products-container'), true);
             if (newStore.length < 1) {
                 const products = get('.products-container');
                 products.innerHTML = 'Sorry, no products matched your search.';
             }
         } else {
-            displayProducts(store, get('.products-container'));
+            displayProducts(store, get('.products-container'), true);
         }
     });
 }
@@ -41,7 +41,7 @@ function setupCompanies(store) {
             } else {
                 newStore = store.filter((product) => product.company === e.target.textContent);
             }
-            displayProducts(newStore, get('.products-container'));
+            displayProducts(newStore, get('.products-container'), true);
         }
     });
 }
@@ -62,7 +62,7 @@ function setupPrice(store) {
         const value = parseInt(priceInput.value);
         priceValue.textContent = `Value : $${value}`;
         let newStore = store.filter((product) => product.price / 100 <= value);
-        displayProducts(newStore, get('.products-container'));
+        displayProducts(newStore, get('.products-container'), true);
         if (newStore.length < 1) {
             const products = get('.products-container');
             products.innerHTML = 'Sorry, no products matched your search.';
