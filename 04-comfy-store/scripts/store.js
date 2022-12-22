@@ -13,4 +13,10 @@ function setupStore(products) {
     });
     setStorageItem('store', store);
 }
-export { store, setupStore };
+
+function findProduct(id) {
+    let product = store.find((product) => product.id === id);
+    return product;
+}
+
+export { store, setupStore, findProduct };
