@@ -260,6 +260,7 @@ function generateFirstUser() {
         const password = element.querySelector('.password').textContent;
         const email = element.querySelector('.email').textContent;
         addToLocalStorage(id, { username, password, email });
+        counter++;
     }
 }
 
