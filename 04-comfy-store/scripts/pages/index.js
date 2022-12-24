@@ -1,11 +1,10 @@
 import '../toggleSidebar.js';
 import '../toggleCart.js';
 import '../setupCart.js';
-import { fixedNavbarColor } from '../navbar.js';
-import { get } from '../utils.js';
+import { get, fixedNavbarColor } from '../utils.js';
 import { fetchProducts } from '../fetchProducts.js';
-import { store, setupStore } from '../store.js';
 import { displayProducts } from '../displayProducts.js';
+import { store, setupStore } from '../setupStore.js';
 
 fixedNavbarColor();
 

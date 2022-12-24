@@ -1,11 +1,16 @@
 import { getStorageItem, setStorageItem, formatPrice, get } from './utils.js';
-import { findProduct } from './store.js';
+import { store } from './setupStore.js';
 
 const cartItemCountDOM = get('.cart-item-count');
 const cartItemsDOM = get('.cart-items');
 const cartTotalDOM = get('.cart-total');
 
 let cart = getStorageItem('cart');
+
+function findProduct(id) {
+    let product = store.find((product) => product.id === id);
+    return product;
+}
 
 function addToCartDOM({ id, name, price, image, amount }) {
     const article = document.createElement('article');
