@@ -129,20 +129,6 @@ h6 {
     color: var(--colorBlack);
 }
 
-.error {
-    position: absolute;
-    width: 90vw;
-}
-
-.error h4 {
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-}
-
-.error a {
-    font-size: 0.9rem;
-}
-
 /* NAVBAR */
 /* ==================================================================================================== */
 
