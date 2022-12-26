@@ -649,11 +649,13 @@ h6 {
 }
 
 .search-input {
+    font-size: 1rem;
     padding: 0.5rem;
     background: var(--colorGrey-9);
     border-radius: var(--borderRadius);
     border-color: transparent;
     letter-spacing: var(--letterSpacing);
+    max-width: 200px;
 }
 
 .search-input::placeholder {
@@ -671,6 +673,7 @@ h6 {
     color: var(--colorGrey-4);
     cursor: pointer;
     transition: var(--transition);
+    font-size: 1rem;
 }
 
 .company-btn:hover {
@@ -734,12 +737,14 @@ h6 {
     margin-bottom: 0.25rem;
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
+    font-size: 1.1rem;
 }
 
 .product-price {
     margin-bottom: 0;
     color: var(--colorGrey-3);
     font-weight: 700;
+    font-size: 1.1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -760,12 +765,6 @@ h6 {
     }
     .products-container .product-img {
         height: 10rem;
-    }
-    .products-container .product-name {
-        font-size: 0.85rem;
-    }
-    .products-container .product-price {
-        font-size: 0.85rem;
     }
 }
 
