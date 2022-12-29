@@ -81,5 +81,136 @@ h6 {
     font-size: 1rem;
 }
 
+.section-center {
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* NAVBAR */
+/* ==================================================================================================== */
+
+.nav {
+    height: 6rem;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: var(--colorLightBrown);
+    border-bottom: 4px solid var(--colorVeryDarkBrown);
+    position: fixed;
+}
+
+.nav-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: none;
+}
+
+.nav-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    margin-right: 0.2rem;
+    color: var(--colorVeryDarkBrown);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cart-btn-container {
+    position: relative;
+}
+
+.cart-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--colorVeryDarkBrown);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cart-item-count {
+    position: absolute;
+    top: -0.85rem;
+    right: -0.85rem;
+    background: var(--colorOrange);
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.button-divider {
+    height: 2.4rem;
+    width: 0.45rem;
+    background-color: var(--colorOrange);
+    border-radius: 10rem;
+}
+
+.logo {
+    font-family: var(--fontSecondary);
+    font-size: 2.5rem;
+    color: var(--colorVeryDarkBrown);
+    font-weight: 600;
+}
+
+.nav-link {
+    text-transform: uppercase;
+    color: var(--colorVeryDarkBrown);
+    cursor: pointer;
+}
+
+.menu-link,
+.about-link,
+.location-link,
+.booking-link {
+    border-bottom: 2px solid var(--colorDarkBrown);
+}
+
+@media screen and (min-width: 800px) {
+    .nav-btn,
+    .button-divider {
+        display: none;
+    }
+
+    .cart-btn {
+        font-size: 1.7rem;
+    }
+    .cart-item-count {
+        width: 1.4rem;
+        height: 1.4rem;
+        font-size: 0.88rem;
+    }
+    .nav-links {
+        display: flex;
+        gap: 1.6rem;
+    }
+}
+
 /* END */
 /* ==================================================================================================== */
