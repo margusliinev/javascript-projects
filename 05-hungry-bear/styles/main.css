@@ -214,7 +214,7 @@ h6 {
     }
 }
 
-/* MAIN */
+/* MENU */
 /* ==================================================================================================== */
 
 .main {
@@ -501,13 +501,113 @@ h6 {
     }
 }
 
-/* MAP */
+/* LOCATION */
 /* ==================================================================================================== */
 
 .map {
     padding-top: 6rem;
     width: 100%;
     height: calc(100vh - 240px);
+}
+
+/* BOOKING */
+/* ==================================================================================================== */
+
+.booking {
+    padding-top: 7rem;
+    background-color: var(--colorLightBrown);
+    height: calc(100vh - 240px);
+}
+
+.booking-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.booking-form {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.form-title {
+    font-weight: 500;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.form-field-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.container-icon {
+    width: 10%;
+    background-color: white;
+    position: relative;
+    border: 1.5px solid #8f8f8f;
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+}
+
+.container-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #5c5c5c;
+}
+
+.textarea-icon i {
+    transform: translate(-7px, -40px);
+}
+
+.form-field {
+    width: 90%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    appearance: none;
+    border: 1.5px solid #8f8f8f;
+    font-family: var(--fontPrimary);
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+}
+
+.form-field:focus {
+    outline: none;
+}
+
+.form-field::placeholder {
+    color: black;
+    font-family: var(--fontPrimary);
+}
+
+.arrow-down {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.5rem;
+    color: #5c5c5c;
+}
+
+.submit-btn {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--colorOrange);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    background-color: #bb7116;
 }
 
 /* END */
