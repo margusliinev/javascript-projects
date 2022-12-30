@@ -448,5 +448,57 @@ h6 {
     letter-spacing: var(--letterSpacing);
 }
 
+/* ABOUT */
+/* ==================================================================================================== */
+
+.about-section {
+    padding: 6rem 0;
+    background-color: var(--colorLightBrown);
+}
+
+.about-title h2 {
+    font-weight: 500;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+
+.about-title span {
+    color: var(--colorOrange);
+    font-size: 0.85em;
+    margin-right: 0.5rem;
+}
+
+.about-title p {
+    line-height: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.about-people {
+    margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    max-width: 1000px;
+}
+
+@media screen and (min-width: 600px) {
+    .about-people {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .about-people {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 /* END */
 /* ==================================================================================================== */
