@@ -1,1 +1,1 @@
-import '../toggleEvents.js';
+import '../navigation.js';
