@@ -92,14 +92,14 @@ h6 {
 /* ==================================================================================================== */
 
 .nav {
+    position: fixed;
     height: 6rem;
     width: 100%;
     display: grid;
     place-items: center;
     background-color: var(--colorLightBrown);
     border-bottom: 4px solid var(--colorVeryDarkBrown);
-    z-index: 999;
-    position: fixed;
+    z-index: 1;
 }
 
 .nav-center {
@@ -122,14 +122,14 @@ h6 {
     display: none;
 }
 
-.nav-btn-container {
+.sidebar-btn-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
 }
 
-.nav-btn {
+.sidebar-btn {
     background-color: transparent;
     border: none;
     font-size: 2rem;
@@ -195,7 +195,7 @@ h6 {
 }
 
 @media screen and (min-width: 800px) {
-    .nav-btn,
+    .sidebar-btn,
     .button-divider {
         display: none;
     }
@@ -236,6 +236,7 @@ h6 {
     font-size: 1rem;
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .filter-divider {
@@ -624,6 +625,7 @@ h6 {
     transition: var(--transition);
     opacity: 0;
     background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
 .sidebar-overlay.show {
@@ -735,7 +737,7 @@ h6 {
     color: var(--colorVeryDarkBrown);
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    left: 1rem;
     cursor: pointer;
     transition: var(--transition);
 }
