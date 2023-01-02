@@ -239,6 +239,10 @@ h6 {
     cursor: pointer;
 }
 
+.active {
+    background-color: var(--colorOrange);
+}
+
 .filter-divider {
     height: 2.3rem;
     width: 0.4rem;

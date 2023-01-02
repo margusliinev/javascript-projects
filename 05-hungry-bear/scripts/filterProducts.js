@@ -28,6 +28,10 @@ function filterSearch(data) {
 function filterProducts() {
     filterBtns.forEach((btn) => {
         btn.addEventListener('click', function (e) {
+            filterBtns.forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            e.currentTarget.classList.add('active');
             const filteredMenu = filterButtons(menu, e.currentTarget);
             displayProducts(filteredMenu);
             form.addEventListener('keyup', function () {
