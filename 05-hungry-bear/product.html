@@ -9,8 +9,8 @@
         <meta name="author" content="Margus Liinev" />
         <link rel="stylesheet" href="./styles/main.css" />
         <link rel="stylesheet" href="../fontawesome-free-6.2.0-web/css/all.css" />
-        <script defer type="module" src="./scripts/pages/index.js"></script>
-        <title>Hungry Bear || Menu</title>
+        <script defer type="module" src="./scripts/pages/product.js"></script>
+        <title>Hungry Bear || Product</title>
     </head>
     <body>
         <!-- NAVBAR -->
@@ -22,7 +22,7 @@
                 <div class="container">
                     <ul class="nav-links">
                         <li>
-                            <a class="nav-link menu-link" href="index.html">menu</a>
+                            <a class="nav-link" href="index.html">menu</a>
                         </li>
                         <li>
                             <a class="nav-link" href="about.html">about</a>
@@ -50,25 +50,26 @@
             </div>
         </nav>
 
-        <!-- MENU -->
+        <!-- SINGLE PRODUCT -->
         <!-- ==================================================================================================== -->
 
-        <main class="main">
+        <div class="product-banner">
+            <div class="banner-center">
+                <h3>buttermilk pancakes</h3>
+            </div>
+        </div>
+
+        <main class="single-product-section">
             <div class="section-center">
-                <div class="filters-container">
-                    <div class="main-btn-container">
-                        <button class="filter-btn all active">all</button>
-                        <button class="filter-btn breakfast">breakfast</button>
-                        <button class="filter-btn lunch">lunch</button>
-                        <button class="filter-btn dinner">dinner</button>
-                        <button class="filter-btn shakes">shakes</button>
+                <div class="single-product">
+                    <img src="./images/item-1.jpeg" class="single-product-img" alt="single product" />
+                    <div class="single-product-info">
+                        <h5 class="description-title">Description:</h5>
+                        <p class="description-text">I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed</p>
+                        <h5 class="price-title">price: <span>$17.99</span></h5>
+                        <button class="add-to-cart-btn" type="button">add to cart</button>
                     </div>
-                    <div class="filter-divider"></div>
-                    <form class="input-form">
-                        <input type="text" class="search-input" placeholder="Search...                                                      &#xf002"/>
-                    </form>
                 </div>
-                <div class="products-container"></div>
             </div>
         </main>
 
@@ -79,9 +80,9 @@
             <div class="footer-center">
                 <ul class="social-icons">
                     <li>
-                            <a target="_blank" href="https://www.twitter.com">
-                                <i class="social-icon fa-brands fa-twitter"></i>
-                            </a>
+                        <a target="_blank" href="https://www.twitter.com">
+                            <i class="social-icon fa-brands fa-twitter"></i>
+                        </a>
                     </li>
                     <li>
                         <a target="_blank" href="https://www.instagram.com">
@@ -96,7 +97,6 @@
                 </ul>
                 <h1 class="footer-logo">hungry bear</h1>
                 <p class="copyright">Copyright 2023 @ HungryBear LLC</p>
-
             </div>
         </footer>
 

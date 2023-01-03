@@ -406,6 +406,12 @@ h6 {
     }
 }
 
+@media screen and (min-width: 1200px) {
+    .products-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
 /* FOOTER */
 /* ==================================================================================================== */
 
@@ -519,7 +525,7 @@ h6 {
 .booking {
     padding-top: 7rem;
     background-color: var(--colorLightBrown);
-    height: calc(100vh - 240px);
+    min-height: calc(100vh - 240px);
 }
 
 .booking-center {
@@ -607,10 +613,89 @@ h6 {
     border-radius: 0.5rem;
     cursor: pointer;
     transition: var(--transition);
+    margin-bottom: 1rem;
 }
 
 .submit-btn:hover {
     background-color: #bb7116;
+}
+
+/* SINGLE PRODUCT */
+/* ==================================================================================================== */
+
+.product-banner {
+    padding-top: 6rem;
+    background-color: var(--colorVeryDarkBrown);
+    color: white;
+    display: grid;
+    place-items: center;
+    height: 15rem;
+}
+
+.single-product-section {
+    background-color: var(--colorLightBrown);
+    display: grid;
+    place-items: center;
+}
+
+.single-product {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 2rem 0;
+}
+
+.single-product-img {
+    border-radius: var(--borderRadius);
+}
+
+.single-product-info {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.description-title {
+    text-transform: uppercase;
+}
+
+.price-title {
+    text-transform: uppercase;
+}
+
+.price-title span {
+    color: var(--colorOrange);
+}
+
+.add-to-cart-btn {
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: var(--colorOrange);
+    color: white;
+    border: none;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 170px;
+    height: 40px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #bb7116;
+}
+
+@media screen and (min-width: 800px) {
+    .single-product {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
+    .single-product-info {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+    }
+    .single-product-section {
+        padding: 1rem 0;
+        min-height: calc(100vh - 240px - 240px);
+    }
 }
 
 /* SIDEBAR */
