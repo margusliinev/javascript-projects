@@ -221,6 +221,7 @@ h6 {
     padding-top: 10rem;
     padding-bottom: 5rem;
     background-color: var(--colorLightBrown);
+    min-height: calc(100vh - 240px);
 }
 
 .main-btn-container {
@@ -384,6 +385,14 @@ h6 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.error {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 1;
 }
 
 @media screen and (min-width: 600px) {
@@ -629,7 +638,11 @@ h6 {
     color: white;
     display: grid;
     place-items: center;
-    height: 15rem;
+    height: 12rem;
+}
+
+.product-banner h3 {
+    font-weight: 400;
 }
 
 .single-product-section {
@@ -687,6 +700,10 @@ h6 {
     .single-product {
         grid-template-columns: 1fr 1fr;
         column-gap: 2rem;
+        height: 400px;
+    }
+    .single-product-img {
+        min-height: 250px;
     }
     .single-product-info {
         display: grid;
@@ -694,7 +711,7 @@ h6 {
     }
     .single-product-section {
         padding: 1rem 0;
-        min-height: calc(100vh - 240px - 240px);
+        min-height: calc(100vh - 240px - 192px);
     }
 }
 
