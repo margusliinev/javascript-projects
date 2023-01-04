@@ -1,4 +1,5 @@
 import { get } from './utils.js';
+import { addToCart } from './addToCart.js';
 
 const container = get('.products-container');
 
@@ -12,7 +13,7 @@ function displayProducts(data) {
                                 <a href="product.html?id=${product.id}" class="product-icon">
                                     <i class="fas fa-search"></i>
                                 </a>
-                                <button class="product-cart-btn product-icon data-id="${product.id}">
+                                <button class="product-cart-btn product-icon" data-id="${product.id}">
                                     <i class="fas fa-shopping-cart"></i>
                                 </button>
                             </div>
@@ -25,6 +26,12 @@ function displayProducts(data) {
         })
         .join('');
     container.innerHTML = products;
+    const cartBtns = document.querySelectorAll('.product-cart-btn');
+    cartBtns.forEach((btn) => {
+        btn.addEventListener('click', function (e) {
+            addToCart(e.currentTarget.dataset.id);
+        });
+    });
     if (!products) {
         container.innerHTML = `<h4 class="error">Sorry, no products matched your search.</h4>`;
     }

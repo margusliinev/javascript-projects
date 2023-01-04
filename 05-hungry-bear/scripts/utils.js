@@ -7,4 +7,18 @@ function get(selection) {
     }
 }
 
-export { get };
+function getStorageItem(key) {
+    let storageItem = localStorage.getItem(key);
+    if (storageItem) {
+        storageItem = JSON.parse(localStorage.getItem(key));
+    } else {
+        storageItem = [];
+    }
+    return storageItem;
+}
+
+function setStorageItem(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+export { get, getStorageItem, setStorageItem };

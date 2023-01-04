@@ -1,9 +1,13 @@
 import '../navigation.js';
 import '../displayProducts.js';
 import { menu } from '../data.js';
-import { filterBtns, searchInput, form, filterButtons, filterSearch } from '../filterProducts.js';
 import { displayProducts } from '../displayProducts.js';
+import { filterBtns, searchInput, form, filterButtons, filterSearch } from '../filterProducts.js';
+import { setupMenu } from '../setupMenu.js';
+import { setupCart } from '../setupCart.js';
 
+setupMenu();
+setupCart();
 displayProducts(menu);
 
 filterBtns.forEach((btn) => {
