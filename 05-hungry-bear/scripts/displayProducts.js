@@ -1,5 +1,5 @@
 import { get } from './utils.js';
-import { addToCart } from './addToCart.js';
+import { addToCart } from './setupCart.js';
 
 const container = get('.products-container');
 
