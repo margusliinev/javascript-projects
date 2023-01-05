@@ -1,8 +1,11 @@
-import { get, getStorageItem, setStorageItem } from './utils.js';
+import { get, formatPrice, getStorageItem, setStorageItem } from './utils.js';
 import { menu } from './data.js';
 
 let cart = getStorageItem('cart');
+
+const cartItemCount = get('.cart-item-count');
 const cartItems = get('.cart-items');
+const cartTotal = get('.cart-total span');
 
 function setupCart() {
     setStorageItem('cart', cart);
@@ -22,8 +25,12 @@ function addToCart(id) {
         addToCartDOM(product);
     } else {
         const amount = increaseAmount(id);
-        product.amount = amount;
+        const items = [...cartItems.querySelectorAll('.cart-item-amount')];
+        const newAmount = items.find((value) => value.dataset.id === id);
+        newAmount.textContent = amount;
     }
+    displayCartTotalPrice();
+    displayCartItemCount();
     setStorageItem('cart', cart);
 }
 
@@ -68,6 +75,24 @@ function displayAllCartItems() {
     });
 }
 
+function displayCartItemCount() {
+    const amount = cart.reduce((total, value) => {
+        total = total + value.amount;
+        return total;
+    }, 0);
+    cartItemCount.textContent = amount;
+}
+
+function displayCartTotalPrice() {
+    const amount = cart.reduce((total, value) => {
+        total = total + value.price * value.amount;
+        return total;
+    }, 0);
+    cartTotal.textContent = `$${formatPrice(amount)}`;
+}
+
+displayCartItemCount();
+displayCartTotalPrice();
 displayAllCartItems();
 
 export { setupCart, addToCart, addToCartDOM };

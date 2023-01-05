@@ -867,6 +867,7 @@ h6 {
 
 .cart-total span {
     color: var(--colorOrange);
+    font-weight: 400;
 }
 
 .cart-checkout {
