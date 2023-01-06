@@ -1,6 +1,7 @@
 import '../navigation.js';
 import { get } from '../utils.js';
 import { menu } from '../data.js';
+import { addToCart } from '../setupCart.js';
 
 const banner = get('.product-banner h3');
 const image = get('.single-product-img');
@@ -22,5 +23,5 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 addToCartBtn.addEventListener('click', function () {
-    // addToCart(productID)
+    addToCart(productID);
 });

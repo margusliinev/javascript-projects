@@ -7,10 +7,6 @@ const cartItemCount = get('.cart-item-count');
 const cartItems = get('.cart-items');
 const cartTotal = get('.cart-total span');
 
-function setupCart() {
-    setStorageItem('cart', cart);
-}
-
 function findProduct(id) {
     let product = menu.find((product) => product.id === parseInt(id));
     return product;
@@ -44,6 +40,22 @@ function increaseAmount(id) {
         return cartItem;
     });
     return newAmount;
+}
+
+function decreaseAmount(id) {
+    let newAmount;
+    cart = cart.map((cartItem) => {
+        if (cartItem.id === parseInt(id)) {
+            newAmount = cartItem.amount - 1;
+            cartItem = { ...cartItem, amount: newAmount };
+        }
+        return cartItem;
+    });
+    return newAmount;
+}
+
+function removeItemFromCart(id) {
+    cart = cart.filter((item) => item.id !== parseInt(id));
 }
 
 function addToCartDOM(product) {
@@ -91,8 +103,37 @@ function displayCartTotalPrice() {
     cartTotal.textContent = `$${formatPrice(amount)}`;
 }
 
+function setupCartFunctionality() {
+    cartItems.addEventListener('click', function (e) {
+        if (e.target.classList.contains('cart-item-remove-btn')) {
+            removeItemFromCart(e.target.dataset.id);
+            e.target.parentElement.parentElement.remove();
+        }
+        if (e.target.parentElement.classList.contains('cart-item-increase-btn')) {
+            const newAmount = increaseAmount(e.target.parentElement.dataset.id);
+            e.target.parentElement.nextElementSibling.textContent = newAmount;
+        }
+        if (e.target.parentElement.classList.contains('cart-item-decrease-btn')) {
+            const newAmount = decreaseAmount(e.target.parentElement.dataset.id);
+            if (newAmount < 1) {
+                removeItemFromCart(e.target.parentElement.dataset.id);
+                e.target.parentElement.parentElement.parentElement.remove();
+            } else {
+                e.target.parentElement.previousElementSibling.textContent = newAmount;
+            }
+        }
+        displayCartItemCount();
+        displayCartTotalPrice();
+        setStorageItem('cart', cart);
+        if (cart.length < 1) {
+            localStorage.removeItem('cart');
+        }
+    });
+}
+
 displayCartItemCount();
 displayCartTotalPrice();
 displayAllCartItems();
+setupCartFunctionality();
 
-export { setupCart, addToCart, addToCartDOM };
+export { addToCart };
