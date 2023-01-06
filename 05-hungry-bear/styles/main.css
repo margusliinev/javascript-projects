@@ -532,7 +532,7 @@ h6 {
 /* ==================================================================================================== */
 
 .booking {
-    padding-top: 7rem;
+    padding-top: 8rem;
     background-color: var(--colorLightBrown);
     min-height: calc(100vh - 240px);
 }
@@ -548,13 +548,12 @@ h6 {
     place-items: center;
     grid-template-columns: 1fr;
     row-gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .form-title {
     font-weight: 500;
     font-size: 1.9rem;
-    margin-bottom: 1rem;
     text-transform: uppercase;
 }
 
@@ -601,8 +600,15 @@ h6 {
 }
 
 .form-field::placeholder {
-    color: black;
     font-family: var(--fontPrimary);
+}
+
+#email::placeholder {
+    color: #5c5c5c;
+}
+
+textarea::placeholder {
+    color: #5c5c5c;
 }
 
 .arrow-down {
@@ -622,11 +628,51 @@ h6 {
     border-radius: 0.5rem;
     cursor: pointer;
     transition: var(--transition);
-    margin-bottom: 1rem;
 }
 
 .submit-btn:hover {
     background-color: #bb7116;
+}
+
+@keyframes appear {
+    0% {
+        font-size: 0.25rem;
+    }
+    100% {
+        font-size: 1rem;
+    }
+}
+
+.success {
+    display: block !important;
+    color: #198833;
+}
+
+.alert {
+    display: block !important;
+    color: #dc3545;
+}
+
+.booking-alert {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+    animation: appear 1s ease-out;
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .booking {
+        padding-top: 7rem;
+    }
+    .submit-btn {
+        margin-bottom: 0.5rem;
+    }
+    .booking-alert {
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 /* SINGLE PRODUCT */
