@@ -1,4 +1,6 @@
 import { get } from './utils.js';
+import { menu } from './data.js';
+import { displayProducts } from './displayProducts.js';
 
 const filterBtns = [...document.querySelectorAll('.filter-btn')];
 const searchInput = get('.search-input');

@@ -24,7 +24,19 @@ window.matchMedia('(min-width: 800px)').addEventListener('change', function () {
     sidebarOverlay.classList.remove('show');
 });
 
-sidebarBtn.addEventListener('click', () => sidebarOverlay.classList.add('show'));
-sidebarClose.addEventListener('click', () => sidebarOverlay.classList.remove('show'));
-cartBtn.addEventListener('click', () => cartOverlay.classList.add('show'));
-cartClose.addEventListener('click', () => cartOverlay.classList.remove('show'));
+sidebarBtn.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    sidebarOverlay.classList.add('show');
+});
+sidebarClose.addEventListener('click', () => {
+    document.body.style.overflow = 'unset';
+    sidebarOverlay.classList.remove('show');
+});
+cartBtn.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    cartOverlay.classList.add('show');
+});
+cartClose.addEventListener('click', () => {
+    document.body.style.overflow = 'unset';
+    cartOverlay.classList.remove('show');
+});

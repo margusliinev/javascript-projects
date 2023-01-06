@@ -1,4 +1,5 @@
 import '../navigation.js';
+import '../setupCart.js';
 import { get } from '../utils.js';
 import { menu } from '../data.js';
 import { addToCart } from '../setupCart.js';
