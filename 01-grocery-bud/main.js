@@ -52,7 +52,7 @@ function deleteItem(e) {
     e.currentTarget.parentElement.parentElement.remove();
     displayAlert('Item removed from the list', 'danger');
     setBackToDefault();
-    if (list.children.length === 0) {
+    if (list.children.length < 1) {
         container.classList.remove('show-container');
     }
     removeFromLocalStorage(id);
@@ -101,7 +101,12 @@ function removeFromLocalStorage(id) {
             return item;
         }
     });
-    localStorage.setItem('list', JSON.stringify(items));
+    if (list.children.length < 1) {
+        container.classList.remove('show-container');
+        localStorage.removeItem('list');
+    } else {
+        localStorage.setItem('list', JSON.stringify(items));
+    }
 }
 
 function editLocalStorage(id, value) {
